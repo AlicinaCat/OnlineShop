@@ -1,0 +1,18 @@
+﻿@model Online_Shop.Models.LoginUser
+
+<h1>Log in</h1>
+
+<form asp-controller="Account" asp-action="Login" method="post">
+    <label asp-for="Username"></label>
+    <input asp-for="Username" type="text" />
+    <br />
+    <label asp-for="Password"></label>
+    <input asp-for="Password" type="password" />
+    <br />
+    @*<label asp-for="RememberMe">
+        <input asp-for="RememberMe" />
+        @Html.DisplayNameFor(m => m.RememberMe)
+    </label>*@
+    <input type="submit" value="Submit"/>
+
+</form>

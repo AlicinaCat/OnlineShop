@@ -1,0 +1,14 @@
+﻿@model Online_Shop.Models.RegisterUser
+
+<h1>Sign up</h1>
+
+<form asp-controller="Account" asp-action="Register" method="post">
+    <label asp-for="Username"></label>
+    <input type="text" asp-for="Username" />
+
+    <label asp-for="Password"></label>
+    <input type="password" asp-for="Password" />
+
+    <input type="submit" value="Sign up"/>
+
+</form>
