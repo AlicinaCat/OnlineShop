@@ -54,7 +54,7 @@ namespace Online_Shop
             {
                 routes.MapRoute(
                     name: "Default",
-                    template: "{controller=Account}/{action=Index}"
+                    template: "{controller=Home}/{action=Index}"
                     );
             });
         }

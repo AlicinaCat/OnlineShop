@@ -1,11 +1,23 @@
-﻿@model List<Online_Shop.Models.Food>
+﻿@model Online_Shop.ViewModels.ViewModelFood
 
 <h1>Menu</h1>
 
 <ul>
-    @foreach (var item in Model)
+    @foreach (var item in Model.AllFoods)
     {
-        <li>@item.Name</li>
+        <li>@item.Name
+
+        <ul class="ingredients" style="padding: 0">
+            @foreach (var ing in item.Ingredients)
+            {
+                <li>
+                    @ing.IngredientName
+                </li>
+
+            }
+
+        </ul>
+    </li>
     }
 </ul>
 
