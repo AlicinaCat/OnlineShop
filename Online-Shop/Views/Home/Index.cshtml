@@ -1,1 +1,11 @@
-﻿<h1>Welcome!</h1>
+﻿@model List<Online_Shop.Models.Food>
+
+<h1>Menu</h1>
+
+<ul>
+    @foreach (var item in Model)
+    {
+        <li>@item.Name</li>
+    }
+</ul>
+

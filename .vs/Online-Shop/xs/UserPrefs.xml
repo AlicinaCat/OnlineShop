@@ -1,24 +1,26 @@
 ﻿<Properties StartupConfiguration="{0AD0DFF3-388F-41AD-A69A-0D09F61B26A2}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Online-Shop/Views/Shared/_LoginPartial.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Online-Shop Status">
     <Files>
       <File FileName="Online-Shop/ModelsIdentity/ApplicationUser.cs" Line="6" Column="48" />
       <File FileName="Online-Shop/ModelsIdentity/ApplicationDbContext.cs" Line="17" Column="43" />
-      <File FileName="Online-Shop/Startup.cs" Line="53" Column="66" />
+      <File FileName="Online-Shop/Startup.cs" Line="40" Column="69" />
       <File FileName="Online-Shop/appsettings.json" Line="5" Column="2" />
       <File FileName="Online-Shop/Models/RegisterUser.cs" Line="14" Column="114" />
-      <File FileName="Online-Shop/Controllers/HomeController.cs" Line="22" Column="1" />
+      <File FileName="Online-Shop/Controllers/HomeController.cs" Line="28" Column="30" />
       <File FileName="Online-Shop/Controllers/AccountController.cs" Line="77" Column="50" />
       <File FileName="Online-Shop/Views/_ViewImports.cshtml" Line="1" Column="1" />
-      <File FileName="Online-Shop/Views/Home/Index.cshtml" Line="2" Column="1" />
+      <File FileName="Online-Shop/Views/Home/Index.cshtml" Line="8" Column="23" />
       <File FileName="Online-Shop/Views/Account/Register.cshtml" Line="3" Column="12" />
-      <File FileName="Online-Shop/Views/Account/Index.cshtml" Line="5" Column="62" />
+      <File FileName="Online-Shop/Views/Account/Index.cshtml" Line="3" Column="26" />
       <File FileName="Online-Shop/Models/LoginUser.cs" Line="16" Column="10" />
       <File FileName="Online-Shop/Views/Account/Login.cshtml" Line="12" Column="1" />
       <File FileName="Online-Shop/Controllers/AdminController.cs" Line="14" Column="42" />
       <File FileName="Online-Shop/_ViewStart.cshtml" Line="1" Column="1" />
-      <File FileName="Online-Shop/Views/Shared/_Layout.cshtml" Line="41" Column="18" />
-      <File FileName="Online-Shop/wwwroot/css/style.css" Line="12" Column="1" />
-      <File FileName="Online-Shop/Views/Shared/_LoginPartial.cshtml" Line="6" Column="1" />
+      <File FileName="Online-Shop/Views/Shared/_Layout.cshtml" Line="25" Column="22" />
+      <File FileName="Online-Shop/wwwroot/css/style.css" Line="15" Column="2" />
+      <File FileName="Online-Shop/Views/Shared/_LoginPartial.cshtml" Line="9" Column="24" />
+      <File FileName="Online-Shop/Models/TomasosContext.cs" Line="1" Column="1" />
+      <File FileName="Online-Shop Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.ItemProperties.Online-Shop PreferredExecutionTarget="MonoDevelop.Default" />

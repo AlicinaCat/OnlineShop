@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Online_Shop.ModelsIdentity;
 using Microsoft.Extensions.Configuration;
+using Online_Shop.Models;
 
 namespace Online_Shop
 {
@@ -34,6 +35,9 @@ namespace Online_Shop
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
+
+            services.AddDbContext<TomasosContext>(options => options.UseSqlServer(
+                Configuration.GetConnectionString("DefaultConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
