@@ -51,6 +51,7 @@ namespace Online_Shop.Controllers
             cust.Name = user.Name;
             cust.Address = user.Address;
             cust.PostalCode = user.PostalCode;
+            cust.Phone = user.Phone;
             cust.City = user.City;
             cust.Username = user.Username;
             cust.Email = user.Email;
@@ -108,6 +109,50 @@ namespace Online_Shop.Controllers
             Customer model = _context.Customer.SingleOrDefault(c => c.UserId == id);
 
             return View(model);
+        }
+
+        public IActionResult EditProfile()
+        {
+            var id = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            Customer cust = _context.Customer.SingleOrDefault(c => c.UserId == id);
+
+            RegisterUser model = new RegisterUser();
+
+            model.Name = cust.Name;
+            model.Address = cust.Address;
+            model.PostalCode = cust.PostalCode;
+            model.City = cust.City;
+            model.Username = cust.Username;
+            model.Email = cust.Email;
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult EditProfile(RegisterUser user) 
+        {
+            var id = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            Customer cust = new Customer();
+
+            cust.Name = user.Name;
+            cust.Address = user.Address;
+            cust.PostalCode = user.PostalCode;
+            cust.Phone = user.Phone;
+            cust.City = user.City;
+            cust.Username = user.Username;
+            cust.Email = user.Email;
+
+            var old = _context.Customer.SingleOrDefault(c => c.UserId == id);
+
+            cust.CustomerId = old.CustomerId;
+            cust.UserId = old.UserId;
+
+            _context.Entry(old).CurrentValues.SetValues(cust);
+            _context.SaveChanges();
+
+            return View("ViewProfile", cust);
         }
     }
 }
