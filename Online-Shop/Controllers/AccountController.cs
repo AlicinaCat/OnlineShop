@@ -48,7 +48,7 @@ namespace Online_Shop.Controllers
                 await _signInManager.SignInAsync(userIdentity, isPersistent: false);
             }
 
-            return View("Login");
+            return RedirectToAction("RegisterCustomer", "Home", user);
         }
 
         [HttpGet]

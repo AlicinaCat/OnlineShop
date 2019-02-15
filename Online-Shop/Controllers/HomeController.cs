@@ -8,6 +8,8 @@ using Online_Shop.Models;
 using Online_Shop.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
+using Microsoft.AspNetCore.Identity;
+using System.Security.Claims;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -40,6 +42,24 @@ namespace Online_Shop.Controllers
             }
 
             return View(model);
+        }
+
+        public IActionResult RegisterCustomer(RegisterUser user)
+        {
+            Customer cust = new Customer();
+
+            cust.Name = user.Name;
+            cust.Address = user.Address;
+            cust.PostalCode = user.PostalCode;
+            cust.City = user.City;
+            cust.Username = user.Username;
+            cust.Email = user.Email;
+            cust.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            _context.Customer.Add(cust);
+            _context.SaveChanges();
+
+            return RedirectToAction("Login", "Account");
         }
 
         public IActionResult AddToCart(int id)
