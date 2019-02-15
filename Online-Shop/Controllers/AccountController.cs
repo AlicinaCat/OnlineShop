@@ -8,6 +8,7 @@ using Online_Shop.ModelsIdentity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Http;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -77,6 +78,8 @@ namespace Online_Shop.Controllers
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
+
+            HttpContext.Session.Clear();
 
             return RedirectToAction("Index");
         }
