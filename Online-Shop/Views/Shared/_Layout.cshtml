@@ -32,9 +32,9 @@
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
 
-            
-                <partial name="_LoginPartial" />
-            
+
+            <partial name="_LoginPartial" />
+
         </div>
     </nav>
 
@@ -55,15 +55,8 @@
                     @RenderBody()
                 </div>
             </div>
-            <div class="col-sm-4">
-                <nav>
-                    <h1>Menu</h1>
-                    <ul>
-                        <li><a>Home</a></li>
-                        <li><a>Link</a></li>
-                        <li><a>Link</a></li>
-                    </ul>
-                </nav>
+            <div id="shopping-cart" class="col-sm-4">
+                <partial name="_ShowCart" model="new List<Online_Shop.Models.Food>()" />
             </div>
         </div>
     </div>
@@ -114,6 +107,8 @@
     </footer>
     <!-- Footer -->
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.ajax.unobtrusive/3.2.4/jquery.unobtrusive-ajax.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>

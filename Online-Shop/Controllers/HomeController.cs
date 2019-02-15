@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Online_Shop.Models;
 using Online_Shop.ViewModels;
+using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -38,6 +40,29 @@ namespace Online_Shop.Controllers
             }
 
             return View(model);
+        }
+
+        public IActionResult AddToCart(int id)
+        {
+            List<Food> cartList;
+
+            Food newFood = new Food();
+            newFood = _context.Food.SingleOrDefault(f => f.FoodId == id);
+
+            if (HttpContext.Session.GetString("cart") == null)
+            {
+                cartList = new List<Food>();
+            }
+            else
+            {
+                var temp = HttpContext.Session.GetString("cart");
+                cartList = JsonConvert.DeserializeObject<List<Food>>(temp);
+            }
+
+            cartList.Add(newFood);
+            HttpContext.Session.SetString("cart", JsonConvert.SerializeObject(cartList));
+
+            return PartialView("_ShowCart", cartList);
         }
     }
 }

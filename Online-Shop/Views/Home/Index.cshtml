@@ -2,22 +2,37 @@
 
 <h1>Menu</h1>
 
-<ul>
+<table>
     @foreach (var item in Model.AllFoods)
     {
-        <li>@item.Name
+        <tr>
+            <td>
+                @item.Name
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ul class="ingredients" style="padding: 0">
+                    @foreach (var ing in item.Ingredients)
+                    {
+                        <li>
+                            @ing.IngredientName
+                        </li>
 
-        <ul class="ingredients" style="padding: 0">
-            @foreach (var ing in item.Ingredients)
-            {
-                <li>
-                    @ing.IngredientName
-                </li>
+                    }
 
-            }
+                </ul>
+            </td>
 
-        </ul>
-    </li>
+            <td>@item.Price</td>
+
+            <td>
+                <a asp-controller="Home" asp-action="AddToCart" asp-route-id="@item.FoodId"
+                   data-ajax="true"
+                   data-ajax-method="GET"
+                   data-ajax-mode="replace"
+                   data-ajax-update="#shopping-cart">Add to cart</a>
+            </td>
+        </tr>
     }
-</ul>
-
+</table>
