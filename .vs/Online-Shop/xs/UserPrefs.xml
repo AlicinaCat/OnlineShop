@@ -1,12 +1,12 @@
 ﻿<Properties StartupConfiguration="{0AD0DFF3-388F-41AD-A69A-0D09F61B26A2}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Online-Shop/Views/Home/EditProfile.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Online-Shop/ViewModels/CartViewModel.cs">
     <Files>
       <File FileName="Online-Shop/ModelsIdentity/ApplicationUser.cs" Line="10" Column="1" />
       <File FileName="Online-Shop/ModelsIdentity/ApplicationDbContext.cs" Line="17" Column="43" />
       <File FileName="Online-Shop/Startup.cs" Line="32" Column="50" />
       <File FileName="Online-Shop/appsettings.json" Line="5" Column="2" />
       <File FileName="Online-Shop/Models/RegisterUser.cs" Line="28" Column="48" />
-      <File FileName="Online-Shop/Controllers/HomeController.cs" Line="119" Column="30" />
+      <File FileName="Online-Shop/Controllers/HomeController.cs" Line="148" Column="13" />
       <File FileName="Online-Shop/Controllers/AccountController.cs" Line="51" Column="55" />
       <File FileName="Online-Shop/Views/_ViewImports.cshtml" Line="1" Column="1" />
       <File FileName="Online-Shop/Views/Home/Index.cshtml" Line="30" Column="1" />
@@ -16,7 +16,7 @@
       <File FileName="Online-Shop/Views/Account/Login.cshtml" Line="14" Column="27" />
       <File FileName="Online-Shop/Controllers/AdminController.cs" Line="16" Column="31" />
       <File FileName="Online-Shop/_ViewStart.cshtml" Line="1" Column="1" />
-      <File FileName="Online-Shop/Views/Shared/_Layout.cshtml" Line="59" Column="33" />
+      <File FileName="Online-Shop/Views/Shared/_Layout.cshtml" Line="58" Column="54" />
       <File FileName="Online-Shop/wwwroot/css/style.css" Line="16" Column="1" />
       <File FileName="Online-Shop/Views/Shared/_LoginPartial.cshtml" Line="19" Column="22" />
       <File FileName="Online-Shop/Models/TomasosContext.cs" Line="1" Column="1" />
@@ -26,12 +26,14 @@
       <File FileName="Online-Shop/Models/FoodIngredient.cs" Line="1" Column="1" />
       <File FileName="Online-Shop/Models/FoodOrder.cs" Line="1" Column="1" />
       <File FileName="Online-Shop/Models/Ingredient.cs" Line="1" Column="1" />
-      <File FileName="Online-Shop/Views/Home/_ShowCart.cshtml" Line="33" Column="1" />
+      <File FileName="Online-Shop/Views/Home/_ShowCart.cshtml" Line="5" Column="11" />
       <File FileName="Online-Shop/Models/Customer.cs" Line="13" Column="1" />
       <File FileName="Online-Shop/Models/AspNetUsers.cs" Line="1" Column="1" />
       <File FileName="Online-Shop Status" />
       <File FileName="Online-Shop/Views/Home/ViewProfile.cshtml" Line="32" Column="50" />
-      <File FileName="Online-Shop/Views/Home/EditProfile.cshtml" Line="63" Column="127" />
+      <File FileName="Online-Shop/Views/Home/EditProfile.cshtml" Line="6" Column="67" />
+      <File FileName="Online-Shop/Views/Home/Checkout.cshtml" Line="3" Column="25" />
+      <File FileName="Online-Shop/ViewModels/CartViewModel.cs" Line="6" Column="14" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.ItemProperties.Online-Shop PreferredExecutionTarget="MonoDevelop.Default" />

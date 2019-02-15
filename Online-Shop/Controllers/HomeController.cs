@@ -154,5 +154,10 @@ namespace Online_Shop.Controllers
 
             return View("ViewProfile", cust);
         }
+
+        public IActionResult Checkout()
+        {
+            return View();
+        }
     }
 }
