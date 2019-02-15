@@ -59,7 +59,7 @@ namespace Online_Shop.Controllers
             _context.Customer.Add(cust);
             _context.SaveChanges();
 
-            return RedirectToAction("Login", "Account");
+            return RedirectToAction("Index");
         }
 
         public IActionResult AddToCart(int id)

@@ -11,7 +11,8 @@ namespace Online_Shop.Models
         public string Username { get; set; }
         [DisplayName("Choose a password")]
         [Required(ErrorMessage = "Password is required.")]
-        [RegularExpression("(?=.*[0-9])", ErrorMessage = "The string must contain at least one numeric character.")]
+        [RegularExpression(@"^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$", 
+            ErrorMessage = "Must be at least 8 characters and include a number and a special character.")]
         public string Password { get; set; }
         [DisplayName("Full name")]
         [Required(ErrorMessage = "Name is required.")]
