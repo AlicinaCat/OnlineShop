@@ -8,6 +8,9 @@
 {
     <ul id="account-nav" class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li class="nav-item">
+            <a class="nav-link" asp-controller="Home" asp-action="ViewProfile">@User.Identity.Name</a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" asp-controller="Account" asp-action="Logout">Log out</a></li>
             @if (User.IsInRole("Administrator"))
             {

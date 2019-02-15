@@ -29,3 +29,4 @@
 /Users/alicina/Projects/Online-Shop/Online-Shop/obj/Debug/netcoreapp2.2/Razor/_ViewStart.g.cshtml.cs
 /Users/alicina/Projects/Online-Shop/Online-Shop/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_LoginPartial.g.cshtml.cs
 /Users/alicina/Projects/Online-Shop/Online-Shop/obj/Debug/netcoreapp2.2/Razor/Views/Home/_ShowCart.g.cshtml.cs
+/Users/alicina/Projects/Online-Shop/Online-Shop/obj/Debug/netcoreapp2.2/Razor/Views/Home/ViewProfile.g.cshtml.cs

@@ -100,5 +100,14 @@ namespace Online_Shop.Controllers
 
             return PartialView("_ShowCart", cartList);
         }
+
+        public IActionResult ViewProfile()
+        {
+            var id = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            Customer model = _context.Customer.SingleOrDefault(c => c.UserId == id);
+
+            return View(model);
+        }
     }
 }

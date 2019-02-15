@@ -9,9 +9,10 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Online_Shop.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     public class AdminController : Controller
     {
-        [Authorize(Roles = "Administrator")]
+
         // GET: /<controller>/
         public IActionResult Index()
         {
