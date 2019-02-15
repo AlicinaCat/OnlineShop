@@ -5,9 +5,9 @@ namespace Online_Shop.Models
 {
     public class LoginUser
     {
-        [Required]
+        [Required(ErrorMessage = "Please fill in the username.")]
         public string Username { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Please fill in the password.")]
         public string Password { get; set; }
         [Display(Name = "Remember me")]
         public bool RememberMe  { get; set; }
