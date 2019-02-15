@@ -64,5 +64,21 @@ namespace Online_Shop.Controllers
 
             return PartialView("_ShowCart", cartList);
         }
+
+        public IActionResult RemoveFromCart(int id)
+        {
+            List<Food> cartList;
+
+            var temp = HttpContext.Session.GetString("cart");
+            cartList = JsonConvert.DeserializeObject<List<Food>>(temp);
+
+            Food food = cartList.FirstOrDefault(f => f.FoodId == id);
+
+            cartList.Remove(food);
+
+            HttpContext.Session.SetString("cart", JsonConvert.SerializeObject(cartList));
+
+            return PartialView("_ShowCart", cartList);
+        }
     }
 }
