@@ -33,6 +33,10 @@ namespace Online_Shop.Controllers
             model.AllFoodIngredients = _context.FoodIngredient.ToList();
             model.AllIngredients = _context.Ingredient.ToList();
 
+            var cartModel = GetShoppingCart();
+
+            model.CartList = cartModel.CartList;
+
             foreach (var item in model.AllFoods)
             {
                 foreach (var ing in model.AllFoodIngredients.Where(f => f.FoodId == item.FoodId).ToList())
@@ -62,28 +66,28 @@ namespace Online_Shop.Controllers
 
             return RedirectToAction("Index");
         }
-
+        
         public IActionResult AddToCart(int id)
         {
-            List<Food> cartList;
+            ViewModelFood model = new ViewModelFood();
 
             Food newFood = new Food();
             newFood = _context.Food.SingleOrDefault(f => f.FoodId == id);
 
             if (HttpContext.Session.GetString("cart") == null)
             {
-                cartList = new List<Food>();
+                model.CartList = new List<Food>();
             }
             else
             {
                 var temp = HttpContext.Session.GetString("cart");
-                cartList = JsonConvert.DeserializeObject<List<Food>>(temp);
+                model.CartList = JsonConvert.DeserializeObject<List<Food>>(temp);
             }
 
-            cartList.Add(newFood);
-            HttpContext.Session.SetString("cart", JsonConvert.SerializeObject(cartList));
+            model.CartList.Add(newFood);
+            HttpContext.Session.SetString("cart", JsonConvert.SerializeObject(model.CartList));
 
-            return PartialView("_ShowCart", cartList);
+            return PartialView("_ShowCart", model);
         }
 
         public IActionResult RemoveFromCart(int id)
@@ -157,7 +161,28 @@ namespace Online_Shop.Controllers
 
         public IActionResult Checkout()
         {
-            return View();
+            var model = GetShoppingCart();
+
+            return View(model);
+        }
+
+        public ViewModelFood GetShoppingCart()
+        {
+            ViewModelFood model = new ViewModelFood();
+
+            if (HttpContext.Session.GetString("cart") == null)
+            {
+                model.CartList = new List<Food>();
+            }
+            else
+            {
+                var temp = HttpContext.Session.GetString("cart");
+                model.CartList = JsonConvert.DeserializeObject<List<Food>>(temp);
+            }
+
+            HttpContext.Session.SetString("cart", JsonConvert.SerializeObject(model.CartList));
+
+            return model;
         }
     }
 }
