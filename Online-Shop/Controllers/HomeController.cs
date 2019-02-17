@@ -66,7 +66,7 @@ namespace Online_Shop.Controllers
 
             return RedirectToAction("Index");
         }
-        
+
         public IActionResult AddToCart(int id)
         {
             ViewModelFood model = new ViewModelFood();
@@ -106,6 +106,23 @@ namespace Online_Shop.Controllers
             return PartialView("_ShowCart", model);
         }
 
+        public IActionResult RemoveFromCheckout(int id)
+        {
+            var model = GetViewModel();
+
+            var temp = HttpContext.Session.GetString("cart");
+            model.CartList = JsonConvert.DeserializeObject<List<Food>>(temp);
+
+            Food food = model.CartList.FirstOrDefault(f => f.FoodId == id);
+
+            model.CartList.Remove(food);
+
+            HttpContext.Session.SetString("cart", JsonConvert.SerializeObject(model.CartList));
+
+            return RedirectToAction("Checkout", model);
+        }
+
+
         public IActionResult ViewProfile()
         {
             var id = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -139,7 +156,7 @@ namespace Online_Shop.Controllers
         }
 
         [HttpPost]
-        public IActionResult EditProfile(ViewModelFood model) 
+        public IActionResult EditProfile(ViewModelFood model)
         {
             var id = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
@@ -190,6 +207,51 @@ namespace Online_Shop.Controllers
             HttpContext.Session.SetString("cart", JsonConvert.SerializeObject(model.CartList));
 
             return model;
+        }
+
+        public IActionResult SubmitOrder()
+        {
+            var model = GetViewModel();
+
+            var id = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            Customer cust = _context.Customer.SingleOrDefault(c => c.UserId == id);
+
+            Order order = new Order();
+            order.CustomerId = cust.CustomerId;
+            order.OrderDate = DateTime.Now;
+            order.TotalAmount = model.CartList.Sum(f => f.Price);
+            order.Delivered = false;
+
+            _context.Order.Add(order);
+            _context.SaveChanges();
+
+            int orderId = order.OrderId;
+
+            var groupedList = model.CartList.GroupBy(f => f.FoodId).Select(grp => grp.ToList()).ToList();
+
+            foreach (var item in groupedList)
+            {
+                FoodOrder foodOrder = new FoodOrder();
+
+                foodOrder.FoodId = item.FirstOrDefault().FoodId;
+                foodOrder.OrderId = orderId;
+                foodOrder.Quantity = item.Count();
+
+                _context.FoodOrder.Add(foodOrder);
+                _context.SaveChanges();
+            }
+
+            return RedirectToAction("OrderConfirmation");
+        }
+
+        public IActionResult OrderConfirmation()
+        {
+            var temp = new List<Food>();
+
+            HttpContext.Session.SetString("cart", JsonConvert.SerializeObject(temp));
+
+            return View();
         }
     }
 }

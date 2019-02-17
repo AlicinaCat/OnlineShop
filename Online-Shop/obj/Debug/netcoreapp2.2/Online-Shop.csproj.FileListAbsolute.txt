@@ -33,3 +33,4 @@
 /Users/alicina/Projects/Online-Shop/Online-Shop/obj/Debug/netcoreapp2.2/Razor/Views/Home/EditProfile.g.cshtml.cs
 /Users/alicina/Projects/Online-Shop/Online-Shop/obj/Debug/netcoreapp2.2/Razor/Views/Home/Checkout.g.cshtml.cs
 /Users/alicina/Projects/Online-Shop/Online-Shop/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_LayoutNotLoggedIn.g.cshtml.cs
+/Users/alicina/Projects/Online-Shop/Online-Shop/obj/Debug/netcoreapp2.2/Razor/Views/Home/OrderConfirmation.g.cshtml.cs

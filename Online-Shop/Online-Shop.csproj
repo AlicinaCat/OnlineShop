@@ -31,4 +31,7 @@
   <ItemGroup>
     <Compile Remove="ViewModels\FoodViewModel.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Remove="Views\Home\SubmitOrder.cshtml" />
+  </ItemGroup>
 </Project>
