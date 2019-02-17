@@ -1,5 +1,9 @@
 ﻿@model Online_Shop.Models.LoginUser
 
+@{
+    Layout = "~/Views/Shared/_LayoutNotLoggedIn.cshtml";
+}
+
 <h1>Log in</h1>
 
 <form asp-controller="Account" asp-action="Login" method="post">

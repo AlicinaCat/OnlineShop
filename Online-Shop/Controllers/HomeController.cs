@@ -33,7 +33,7 @@ namespace Online_Shop.Controllers
             model.AllFoodIngredients = _context.FoodIngredient.ToList();
             model.AllIngredients = _context.Ingredient.ToList();
 
-            var cartModel = GetShoppingCart();
+            var cartModel = GetViewModel();
 
             model.CartList = cartModel.CartList;
 
@@ -92,25 +92,28 @@ namespace Online_Shop.Controllers
 
         public IActionResult RemoveFromCart(int id)
         {
-            List<Food> cartList;
+            var model = GetViewModel();
 
             var temp = HttpContext.Session.GetString("cart");
-            cartList = JsonConvert.DeserializeObject<List<Food>>(temp);
+            model.CartList = JsonConvert.DeserializeObject<List<Food>>(temp);
 
-            Food food = cartList.FirstOrDefault(f => f.FoodId == id);
+            Food food = model.CartList.FirstOrDefault(f => f.FoodId == id);
 
-            cartList.Remove(food);
+            model.CartList.Remove(food);
 
-            HttpContext.Session.SetString("cart", JsonConvert.SerializeObject(cartList));
+            HttpContext.Session.SetString("cart", JsonConvert.SerializeObject(model.CartList));
 
-            return PartialView("_ShowCart", cartList);
+            return PartialView("_ShowCart", model);
         }
 
         public IActionResult ViewProfile()
         {
             var id = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            Customer model = _context.Customer.SingleOrDefault(c => c.UserId == id);
+            Customer cust = _context.Customer.SingleOrDefault(c => c.UserId == id);
+
+            var model = GetViewModel();
+            model.CurrentCustomer = cust;
 
             return View(model);
         }
@@ -121,32 +124,34 @@ namespace Online_Shop.Controllers
 
             Customer cust = _context.Customer.SingleOrDefault(c => c.UserId == id);
 
-            RegisterUser model = new RegisterUser();
+            var model = GetViewModel();
 
-            model.Name = cust.Name;
-            model.Address = cust.Address;
-            model.PostalCode = cust.PostalCode;
-            model.City = cust.City;
-            model.Username = cust.Username;
-            model.Email = cust.Email;
+            model.RegisterUser = new RegisterUser();
+
+            model.RegisterUser.Name = cust.Name;
+            model.RegisterUser.Address = cust.Address;
+            model.RegisterUser.PostalCode = cust.PostalCode;
+            model.RegisterUser.City = cust.City;
+            model.RegisterUser.Username = cust.Username;
+            model.RegisterUser.Email = cust.Email;
 
             return View(model);
         }
 
         [HttpPost]
-        public IActionResult EditProfile(RegisterUser user) 
+        public IActionResult EditProfile(ViewModelFood model) 
         {
             var id = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
             Customer cust = new Customer();
 
-            cust.Name = user.Name;
-            cust.Address = user.Address;
-            cust.PostalCode = user.PostalCode;
-            cust.Phone = user.Phone;
-            cust.City = user.City;
-            cust.Username = user.Username;
-            cust.Email = user.Email;
+            cust.Name = model.RegisterUser.Name;
+            cust.Address = model.RegisterUser.Address;
+            cust.PostalCode = model.RegisterUser.PostalCode;
+            cust.Phone = model.RegisterUser.Phone;
+            cust.City = model.RegisterUser.City;
+            cust.Username = model.RegisterUser.Username;
+            cust.Email = model.RegisterUser.Email;
 
             var old = _context.Customer.SingleOrDefault(c => c.UserId == id);
 
@@ -156,17 +161,19 @@ namespace Online_Shop.Controllers
             _context.Entry(old).CurrentValues.SetValues(cust);
             _context.SaveChanges();
 
-            return View("ViewProfile", cust);
+            model.CurrentCustomer = cust;
+
+            return View("ViewProfile", model);
         }
 
         public IActionResult Checkout()
         {
-            var model = GetShoppingCart();
+            var model = GetViewModel();
 
             return View(model);
         }
 
-        public ViewModelFood GetShoppingCart()
+        public ViewModelFood GetViewModel()
         {
             ViewModelFood model = new ViewModelFood();
 

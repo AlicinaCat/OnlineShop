@@ -26,6 +26,7 @@
     <Folder Include="wwwroot\" />
     <Folder Include="wwwroot\css\" />
     <Folder Include="ViewModels\" />
+    <Folder Include="wwwroot\js\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="ViewModels\FoodViewModel.cs" />
