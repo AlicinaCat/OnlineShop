@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Online_Shop.Models;
 using Online_Shop.ViewModels;
 
@@ -44,6 +45,38 @@ namespace Online_Shop.Controllers
             return View(model);
         }
 
+        [HttpPost]
+        public IActionResult EditMenu(ViewModelFood edited)
+        {
+            var old = GetViewModel();
+
+            old.CurrentFood = _context.Food.SingleOrDefault(f => f.FoodId == edited.CurrentFood.FoodId);
+            edited.CurrentFood.Ingredients = new List<Ingredient>();
+
+            foreach (var item in edited.AllIngredients)
+            {
+                if (item.Selected == true)
+                {
+                    if (old.CurrentFood.Ingredients.FirstOrDefault(i => i.IngredientId == item.IngredientId) == null)
+                        {
+                        FoodIngredient foodIng = new FoodIngredient();
+                        foodIng.FoodId = edited.CurrentFood.FoodId;
+                        foodIng.IngredientId = item.IngredientId;
+
+                        _context.Add(foodIng);
+                        _context.SaveChanges();
+                    }
+
+                }
+            }
+
+            _context.Entry(old.CurrentFood).CurrentValues.SetValues(edited.CurrentFood);
+            _context.SaveChanges();
+
+            return RedirectToAction("ManageMenu");
+
+        }
+
         public IActionResult ManageOrders()
         {
             return View();
@@ -60,6 +93,11 @@ namespace Online_Shop.Controllers
             model.AllFoods = _context.Food.ToList();
             model.AllFoodIngredients = _context.FoodIngredient.ToList();
             model.AllIngredients = _context.Ingredient.ToList();
+
+            foreach (var item in _context.Category)
+            {
+                model.AllCategories.Add(new SelectListItem { Text = item.Title, Value = item.CategoryId.ToString() });
+            }
 
             foreach (var item in model.AllFoods)
             {

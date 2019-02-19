@@ -38,3 +38,4 @@
 /Users/alicina/Projects/Online-Shop/Online-Shop/obj/Debug/netcoreapp2.2/Razor/Views/Admin/ManageMenu.g.cshtml.cs
 /Users/alicina/Projects/Online-Shop/Online-Shop/obj/Debug/netcoreapp2.2/Razor/Views/Admin/ManageOrders.g.cshtml.cs
 /Users/alicina/Projects/Online-Shop/Online-Shop/obj/Debug/netcoreapp2.2/Razor/Views/Admin/ManageUsers.g.cshtml.cs
+/Users/alicina/Projects/Online-Shop/Online-Shop/obj/Debug/netcoreapp2.2/Razor/Views/Admin/EditMenu.g.cshtml.cs
