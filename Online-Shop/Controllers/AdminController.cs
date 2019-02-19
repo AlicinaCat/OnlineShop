@@ -46,7 +46,7 @@ namespace Online_Shop.Controllers
         }
 
 
-        // TODO make this method smaller
+        // TODO - make this method smaller
         [HttpPost]
         public IActionResult EditMenu(ViewModelFood edited)
         {
@@ -87,6 +87,48 @@ namespace Online_Shop.Controllers
             _context.SaveChanges();
 
             return RedirectToAction("ManageMenu");
+        }
+
+        public IActionResult ManageIngredients()
+        {
+            var model = GetViewModel();
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult ManageIngredients(ViewModelFood model)
+        {
+            Ingredient ing = new Ingredient();
+            ing.IngredientName = model.CurrentIngredient.IngredientName;
+
+            _context.Ingredient.Add(ing);
+            _context.SaveChanges();
+
+            return RedirectToAction("ManageIngredients");
+        }
+
+        // TODO - makes sure you can't delete ingredients from other recipes
+        public IActionResult RemoveIngredient(int id)
+        {
+            var ing = _context.Ingredient.SingleOrDefault(i => i.IngredientId == id);
+
+            _context.Remove(ing);
+            _context.SaveChanges();
+
+            return RedirectToAction("ManageIngredients");
+        }
+
+        [HttpPost]
+        public IActionResult EditIngredient(ViewModelFood edited)
+        {
+            var old = GetViewModel();
+            old.CurrentIngredient = _context.Ingredient.SingleOrDefault(i => i.IngredientId == edited.CurrentIngredient.IngredientId);
+
+            _context.Entry(old.CurrentIngredient).CurrentValues.SetValues(edited.CurrentIngredient);
+            _context.SaveChanges();
+
+            return RedirectToAction("ManageIngredients");
         }
 
         public IActionResult ManageOrders()

@@ -34,5 +34,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Remove="Views\Home\SubmitOrder.cshtml" />
+    <Content Remove="Views\Admin\EditIngredient.cshtml" />
   </ItemGroup>
 </Project>
