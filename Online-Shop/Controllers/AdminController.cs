@@ -45,6 +45,8 @@ namespace Online_Shop.Controllers
             return View(model);
         }
 
+
+        // TODO make this method smaller
         [HttpPost]
         public IActionResult EditMenu(ViewModelFood edited)
         {
@@ -58,7 +60,7 @@ namespace Online_Shop.Controllers
                 if (item.Selected == true)
                 {
                     if (old.CurrentFood.Ingredients.FirstOrDefault(i => i.IngredientId == item.IngredientId) == null)
-                        {
+                    {
                         FoodIngredient foodIng = new FoodIngredient();
                         foodIng.FoodId = edited.CurrentFood.FoodId;
                         foodIng.IngredientId = item.IngredientId;
@@ -68,13 +70,23 @@ namespace Online_Shop.Controllers
                     }
 
                 }
-            }
+                else
+                {
+                    if (old.CurrentFood.Ingredients.FirstOrDefault(i => i.IngredientId == item.IngredientId) != null)
+                    {
+                        var foodIng = _context.FoodIngredient.SingleOrDefault(i => i.IngredientId == item.IngredientId);
 
-            _context.Entry(old.CurrentFood).CurrentValues.SetValues(edited.CurrentFood);
+                        _context.Remove(foodIng);
+                        _context.SaveChanges();
+                    }
+                }
+            }
+    
+
+                _context.Entry(old.CurrentFood).CurrentValues.SetValues(edited.CurrentFood);
             _context.SaveChanges();
 
             return RedirectToAction("ManageMenu");
-
         }
 
         public IActionResult ManageOrders()
