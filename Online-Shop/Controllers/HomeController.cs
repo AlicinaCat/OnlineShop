@@ -59,6 +59,7 @@ namespace Online_Shop.Controllers
             cust.City = user.City;
             cust.Username = user.Username;
             cust.Email = user.Email;
+            cust.Points = 0;
             cust.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
             _context.Customer.Add(cust);
@@ -194,6 +195,9 @@ namespace Online_Shop.Controllers
         {
             ViewModelFood model = new ViewModelFood();
 
+            var id = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            model.CurrentCustomer = _context.Customer.SingleOrDefault(c => c.UserId == id);
+
             if (HttpContext.Session.GetString("cart") == null)
             {
                 model.CartList = new List<Food>();
@@ -223,6 +227,28 @@ namespace Online_Shop.Controllers
             order.TotalAmount = model.CartList.Sum(f => f.Price);
             order.Delivered = false;
 
+            if (User.IsInRole("Premium"))
+            {
+                foreach (var item in model.CartList)
+                {
+                    cust.Points += 10;
+                }
+            }
+
+            if(cust.Points >= 100)
+            {
+                order.TotalAmount -= model.CartList.Min(p => p.Price);
+                cust.Points -= 100;
+            }
+
+            if (User.IsInRole("Premium"))
+            {
+                order.TotalAmount -= (int)(order.TotalAmount * 0.2);
+            }
+
+            _context.Entry(cust).CurrentValues.SetValues(cust);
+            _context.SaveChanges();
+
             _context.Order.Add(order);
             _context.SaveChanges();
 
@@ -247,11 +273,13 @@ namespace Online_Shop.Controllers
 
         public IActionResult OrderConfirmation()
         {
+            var model = GetViewModel();
+
             var temp = new List<Food>();
 
             HttpContext.Session.SetString("cart", JsonConvert.SerializeObject(temp));
 
-            return View();
+            return View(model);
         }
     }
 }

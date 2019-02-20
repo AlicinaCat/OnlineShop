@@ -15273,11 +15273,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/alicina/Projects/Online-Shop2/Online-Shop/Online-Shop.csproj",
+      "projectUniqueName": "/Users/alicina/Projects/Online-Shop/Online-Shop/Online-Shop.csproj",
       "projectName": "Online-Shop",
-      "projectPath": "/Users/alicina/Projects/Online-Shop2/Online-Shop/Online-Shop.csproj",
+      "projectPath": "/Users/alicina/Projects/Online-Shop/Online-Shop/Online-Shop.csproj",
       "packagesPath": "/Users/alicina/.nuget/packages/",
-      "outputPath": "/Users/alicina/Projects/Online-Shop2/Online-Shop/obj",
+      "outputPath": "/Users/alicina/Projects/Online-Shop/Online-Shop/obj",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"

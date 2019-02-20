@@ -5,3 +5,10 @@
 }
 
 <h1>Order submitted!</h1>
+
+Thank you for your order.
+
+@if (User.IsInRole("Premium"))
+{
+    <label>Current points:</label> @Model.CurrentCustomer.Points
+}
