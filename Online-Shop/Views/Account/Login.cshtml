@@ -1,0 +1,31 @@
+﻿@model Online_Shop.Models.LoginUser
+
+@{
+    Layout = "~/Views/Shared/_LayoutNotLoggedIn.cshtml";
+}
+
+<h1>Log in</h1>
+
+<form asp-controller="Account" asp-action="Login" method="post">
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label asp-for="Username">Username</label>
+            <input type="text" asp-for="Username" class="form-control" id="inputUsername" placeholder="Username">
+            <span asp-validation-for="Username" style="color: red;"></span>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label asp-for="Password">Password</label>
+            <input type="password" asp-for="Password" class="form-control" id="inputPassword4" placeholder="Password">
+            <span asp-validation-for="Password" style="color: red;"></span>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Log in</button>
+</form>
+
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.17.0/jquery.validate.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"></script>
