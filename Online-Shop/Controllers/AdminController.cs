@@ -167,7 +167,20 @@ namespace Online_Shop.Controllers
 
         public IActionResult ManageOrders()
         {
-            return View();
+            var model = GetViewModel();
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult ChangeOrderState(ViewModelFood model)
+        {
+            var order = _context.Order.SingleOrDefault(o => o.OrderId == model.CurrentOrder.OrderId);
+
+            _context.Entry(order).CurrentValues.SetValues(model.CurrentOrder);
+            _context.SaveChanges();
+
+            return RedirectToAction("ManageOrders");
         }
 
         public IActionResult ManageUsers()
@@ -181,10 +194,13 @@ namespace Online_Shop.Controllers
             model.AllFoods = _context.Food.ToList();
             model.AllFoodIngredients = _context.FoodIngredient.ToList();
             model.AllIngredients = _context.Ingredient.ToList();
+            model.AllFoodOrders = _context.FoodOrder.ToList();
+            model.AllOrders = _context.Order.ToList();
 
             foreach (var item in _context.Category)
             {
                 model.AllCategories.Add(new SelectListItem { Text = item.Title, Value = item.CategoryId.ToString() });
+                
             }
 
             foreach (var item in model.AllFoods)
@@ -193,6 +209,11 @@ namespace Online_Shop.Controllers
                 {
                     item.Ingredients.Add(model.AllIngredients.SingleOrDefault(i => i.IngredientId == ing.IngredientId));
                 }
+            }
+
+            foreach (var item in model.AllOrders)
+            {
+                item.Customer = _context.Customer.SingleOrDefault(c => c.CustomerId == item.CustomerId);
             }
 
             return model;
