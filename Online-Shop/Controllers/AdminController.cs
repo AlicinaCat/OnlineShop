@@ -203,7 +203,9 @@ namespace Online_Shop.Controllers
 
         public IActionResult ManageUsers()
         {
-            return View();
+            var model = GetViewModel();
+
+            return View(model);
         }
 
         public ViewModelFood GetViewModel()
@@ -214,6 +216,7 @@ namespace Online_Shop.Controllers
             model.AllIngredients = _context.Ingredient.ToList();
             model.AllFoodOrders = _context.FoodOrder.ToList();
             model.AllOrders = _context.Order.ToList();
+            model.AllUsers = _context.AspNetUsers.ToList();
 
             foreach (var item in _context.Category)
             {
@@ -232,6 +235,29 @@ namespace Online_Shop.Controllers
             foreach (var item in model.AllOrders)
             {
                 item.Customer = _context.Customer.SingleOrDefault(c => c.CustomerId == item.CustomerId);
+            }
+
+            foreach (var item in model.AllUsers)
+            {
+                var roles = _context.AspNetUserRoles.Where(r => r.UserId == item.Id);
+
+                foreach (var role in roles)
+                {
+                    var userRole = _context.AspNetRoles.Where(ur => ur.Id == role.RoleId).ToList();
+
+                    foreach (var ur in userRole)
+                    {
+                        if (ur.NormalizedName == "PREMIUM")
+                        {
+                            item.isPremium = true;
+                        }
+                        if (ur.NormalizedName == "ADMINISTRATOR")
+                        {
+                            item.isAdmin = true;
+                        }
+                    }
+                }
+
             }
 
             return model;
