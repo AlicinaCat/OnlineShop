@@ -1,0 +1,33 @@
+﻿@model Online_Shop.ViewModels.ViewModelFood
+@if (Model.CartList.Count > 0)
+{
+    <h1>Shopping cart</h1>
+
+    <table>
+        @foreach (var item in Model.CartList)
+        {
+            <tr>
+                <td>
+                    @item.Name
+                </td>
+                <td>@item.Price</td>
+                <td>
+                    <a asp-controller="Home" asp-action="RemoveFromCart" asp-route-id="@item.FoodId"
+                       data-ajax="true"
+                       data-ajax-method="GET"
+                       data-ajax-mode="replace"
+                       data-ajax-update="#shopping-cart">
+                        Remove
+                    </a>
+                </td>
+            </tr>
+        }
+    </table>
+
+    <p>Total: @Model.CartList.Sum(f => f.Price)</p>
+}
+else
+{
+    <h1>Shopping cart</h1>
+    <p>Your shopping cart is empty.</p>
+}

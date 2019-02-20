@@ -1,0 +1,72 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutNotLoggedIn.cshtml";
+}
+
+@model Online_Shop.ViewModels.ViewModelFood
+
+<h1>Manage orders</h1>
+
+<table class="table">
+    <tr>
+        <th>
+            Order ID
+        </th>
+        <th>
+            Date
+        </th>
+        <th>
+            Total
+        </th>
+        <th>
+            Delivered
+        </th>
+        <th>
+            User
+        </th>
+        <th>
+        </th>
+    </tr>
+
+    @foreach (var item in Model.AllOrders)
+    {
+        <tr>
+            <td>
+                @item.OrderId
+            </td>
+            <td>
+                @item.OrderDate
+            </td>
+            <td>
+                @item.TotalAmount
+            </td>
+            <td align="center">
+                <form asp-controller="Admin" asp-action="ChangeOrderState" method="post">
+                    <input asp-for="@Model.CurrentOrder.OrderId" value="@item.OrderId" type="hidden" />
+                    <input asp-for="@Model.CurrentOrder.TotalAmount" value="@item.TotalAmount" type="hidden" />
+                    <input asp-for="@Model.CurrentOrder.OrderDate" value="@item.OrderDate" type="hidden" />
+                    <input asp-for="@Model.CurrentOrder.CustomerId" value="@item.CustomerId" type="hidden" />
+                    @if (item.Delivered)
+                    {
+                        <input class="form-check-input" asp-for="@Model.CurrentOrder.Delivered"
+                               onchange="this.form.submit()"
+                               type="checkbox" id="defaultCheck1" checked>
+                    }
+                    else
+                    {
+                        <input class="form-check-input" asp-for="@Model.CurrentOrder.Delivered"
+                               onchange="this.form.submit()"
+                               type="checkbox" id="defaultCheck1">
+                    }
+
+                </form>
+
+            </td>
+            <td>
+                @item.Customer.Username
+            </td>
+            <td>
+                <a asp-controller="Admin" asp-action="RemoveOrder" asp-route-id="@item.OrderId">Delete</a>
+            </td>
+        </tr>
+    }
+</table>

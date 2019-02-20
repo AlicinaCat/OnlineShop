@@ -1,0 +1,38 @@
+﻿@model Online_Shop.ViewModels.ViewModelFood
+
+@{
+    Layout = "~/Views/Shared/_LayoutNotLoggedIn.cshtml";
+}
+
+
+<h1>Manage menu</h1>
+
+<a asp-controller="Admin" asp-action="AddFood">Add new food</a>
+<table>
+    @foreach (var item in Model.AllFoods)
+    {
+        <tr>
+            <td>@item.Name</td>
+        </tr>
+        <tr>
+            <td>
+                <ul class="ingredients" style="padding: 0">
+                    @foreach (var ing in item.Ingredients)
+                    {
+                        <li>
+                            @ing.IngredientName
+                        </li>
+
+                    }
+
+                </ul>
+            </td>
+            <td>
+                @item.Price
+            </td>
+            <td>
+                <a asp-controller="Admin" asp-action="EditMenu" asp-route-id="@item.FoodId">Edit</a>
+            </td>
+        </tr>
+    }
+</table>

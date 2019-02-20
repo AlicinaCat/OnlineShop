@@ -1,0 +1,38 @@
+﻿@model Online_Shop.ViewModels.ViewModelFood
+
+@{
+    Layout = "~/Views/Shared/_LayoutNotLoggedIn.cshtml";
+}
+
+
+<h1>Manage ingredients</h1>
+
+<form asp-controller="Admin" asp-action="ManageIngredients" method="post">
+    <div class="form-group">
+        <input type="text" asp-for="CurrentIngredient.IngredientName" class="form-control" id="inputName4" placeholder="Name">
+        <span asp-validation-for="CurrentIngredient.IngredientName" style="color: red;"></span>
+        <input type="submit" value="Add" />
+    </div>
+</form>
+
+<table>
+    @foreach (var item in Model.AllIngredients)
+    {
+        <tr>
+            <td>
+                <form a asp-controller="Admin" asp-action="EditIngredient" method="post">
+                    <input type="text" asp-for="@Model.CurrentIngredient.IngredientName" value="@item.IngredientName" />
+                    <input type="hidden" asp-for="@Model.CurrentIngredient.IngredientId" value="@item.IngredientId" />
+                    <input type="submit" value="Save" />
+                </form>
+            </td>
+            <td>
+                <a asp-controller="Admin" asp-action="RemoveIngredient" asp-route-id="@item.IngredientId">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
+
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.17.0/jquery.validate.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"></script>

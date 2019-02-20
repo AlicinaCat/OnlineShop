@@ -1,11 +1,11 @@
 ﻿<Properties GitUserInfo="UsingMD" StartupConfiguration="{0AD0DFF3-388F-41AD-A69A-0D09F61B26A2}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="../../.nuget/packages/microsoft.aspnetcore.razor.design/2.2.0/build/netstandard2.0/Microsoft.AspNetCore.Razor.Design.CodeGeneration.targets">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Online-Shop/Views/Shared/_LoginPartial.cshtml">
     <Files>
       <File FileName="Online-Shop/Views/Shared/_LoginPartial.cshtml" Line="4" Column="1" />
       <File FileName="Online-Shop/Views/Shared/_Layout.cshtml" Line="1" Column="1" />
       <File FileName="Online-Shop/Views/Home/_ShowCart.cshtml" Line="1" Column="1" />
       <File FileName="Online-Shop/Views/Home/Index.cshtml" Line="1" Column="1" />
-      <File FileName="Online-Shop/Controllers/HomeController.cs" Line="1" Column="1" />
+      <File FileName="Online-Shop/Controllers/HomeController.cs" Line="44" Column="26" />
       <File FileName="Online-Shop/Views/Account/Login.cshtml" Line="1" Column="1" />
       <File FileName="Online-Shop/Views/_ViewImports.cshtml" Line="1" Column="1" />
       <File FileName="Online-Shop/Views/Home/EditProfile.cshtml" Line="1" Column="1" />
@@ -19,7 +19,7 @@
       <File FileName="../../.nuget/packages/microsoft.aspnetcore.razor.design/2.2.0/build/netstandard2.0/Microsoft.AspNetCore.Razor.Design.CodeGeneration.targets" Line="1" Column="1" />
       <File FileName="Online-Shop/Models/TomasosContext.cs" Line="1" Column="1" />
       <File FileName="Online-Shop/Controllers/AccountController.cs" Line="1" Column="1" />
-      <File FileName="Online-Shop/Controllers/AdminController.cs" Line="227" Column="49" />
+      <File FileName="Online-Shop/Controllers/AdminController.cs" Line="60" Column="26" />
       <File FileName="Online-Shop/_ViewStart.cshtml" Line="1" Column="1" />
       <File FileName="Online-Shop/Views/Shared/_LayoutNotLoggedIn.cshtml" Line="1" Column="1" />
       <File FileName="Online-Shop/Views/Account/Index.cshtml" Line="1" Column="1" />
@@ -27,19 +27,19 @@
       <File FileName="Online-Shop/Views/Home/OrderConfirmation.cshtml" Line="1" Column="1" />
       <File FileName="Online-Shop/Views/Admin/Index.cshtml" Line="10" Column="84" />
       <File FileName="Online-Shop/Views/Admin/ManageMenu.cshtml" Line="10" Column="46" />
-      <File FileName="Online-Shop/Views/Admin/ManageUsers.cshtml" Line="59" Column="38" />
+      <File FileName="Online-Shop/Views/Admin/ManageUsers.cshtml" Line="53" Column="93" />
       <File FileName="Online-Shop/Views/Admin/ManageOrders.cshtml" Line="1" Column="1" />
       <File FileName="Online-Shop/Views/Admin/EditMenu.cshtml" Line="42" Column="1" />
-      <File FileName="Online-Shop Status" />
       <File FileName="Online-Shop/Views/Admin/ManageIngredients.cshtml" Line="14" Column="40" />
       <File FileName="../../Documents/School/ASP.NET/Demos/:Users:alicina:Projects:Online-Shop:Online-Shop:Views:Admin:EditIngredient.cshtml" Line="1" Column="1" />
       <File FileName="Online-Shop/Views/Admin/AddFood.cshtml" Line="41" Column="32" />
       <File FileName="Online-Shop/Models/Category.cs" Line="1" Column="1" />
       <File FileName="Online-Shop/wwwroot/css/style.css" Line="15" Column="2" />
       <File FileName="Online-Shop/Models/AspNetUserRoles.cs" Line="1" Column="1" />
-      <File FileName="Online-Shop/Models/Food.cs" Line="1" Column="1" />
+      <File FileName="Online-Shop/Models/Food.cs" Line="14" Column="50" />
       <File FileName="Online-Shop/Models/Customer.cs" Line="1" Column="1" />
-      <File FileName="Online-Shop/Models/AspNetUsers.cs" Line="43" Column="28" />
+      <File FileName="Online-Shop/Models/AspNetUsers.cs" Line="1" Column="1" />
+      <File FileName="Online-Shop/Models/Ingredient.cs" Line="16" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.ItemProperties.Online-Shop PreferredExecutionTarget="MonoDevelop.Default" />

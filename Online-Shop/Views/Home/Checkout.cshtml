@@ -1,0 +1,42 @@
+﻿@model Online_Shop.ViewModels.ViewModelFood
+
+@{
+    Layout = "~/Views/Shared/_LayoutNotLoggedIn.cshtml";
+}
+
+<h1>Checkout</h1>
+
+<div id="cart-list">
+    @if (Model.CartList.Count > 0)
+    {
+    <p>
+        Order overview:
+
+        <table>
+            @foreach (var item in Model.CartList)
+        {
+            <tr>
+                <td>
+                    @item.Name
+                </td>
+                <td>
+                    @item.Price
+                </td>
+                <td>
+                    <a asp-controller="Home" asp-action="RemoveFromCheckout" asp-route-id="@item.FoodId">
+                        Remove
+                    </a>
+                </td>
+            </tr>
+    }
+        </table>
+
+        <h3>Total: @Model.CartList.Sum(f => f.Price)</h3>
+    </p>
+<a asp-controller="Home" asp-action="SubmitOrder"><button>Submit order</button></a>
+    }
+    else
+    {
+        <p>Your shopping cart is empty.</p>
+    }
+</div>

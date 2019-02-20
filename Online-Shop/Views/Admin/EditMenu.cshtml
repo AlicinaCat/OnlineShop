@@ -1,0 +1,60 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutNotLoggedIn.cshtml";
+}
+
+@model Online_Shop.ViewModels.ViewModelFood
+
+<h1>Edit menu</h1>
+
+<form asp-controller="Admin" asp-action="EditMenu" method="post">
+    <input type="hidden" asp-for="@Model.CurrentFood.FoodId" value="@Model.CurrentFood.FoodId" />
+    <div class="form-group">
+        <label asp-for="CurrentFood.Name">Name</label>
+        <input type="text" asp-for="CurrentFood.Name" class="form-control" id="inputName4" placeholder="Name">
+        <span asp-validation-for="CurrentFood.Name" style="color: red;"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="CurrentFood.Price"></label>
+        <input type="number" asp-for="CurrentFood.Price" class="form-control" id="inputPrice4" placeholder="Price">
+        <span asp-validation-for="CurrentFood.Price" style="color: red;"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="CurrentFood.Category"></label>
+        <select asp-for="@Model.CurrentFood.CategoryId" value="@Model.CurrentFood.CategoryId"
+                asp-items="Model.AllCategories"></select>
+        <span asp-validation-for="CurrentFood.Category" style="color: red;"></span>
+    </div>
+
+    <div id="ingredient-list-check" class="form-check">
+        <ul>
+            @for (int i = 0; i < Model.AllIngredients.Count; i++)
+            {
+                <li>
+                    @if (Model.CurrentFood.Ingredients.Contains(Model.AllIngredients[i]))
+                    {
+                        <input class="form-check-input" asp-for="@Model.AllIngredients[i].Selected" type="checkbox" id="defaultCheck1" checked>
+                        <label class="form-check-label" for="defaultCheck1">@Model.AllIngredients[i].IngredientName</label>
+                        <input asp-for="@Model.AllIngredients[i].IngredientId" type="hidden" />
+                        <input asp-for="@Model.AllIngredients[i].IngredientName" type="hidden" />
+                    }
+                    else
+                    {
+                        <input class="form-check-input" asp-for="@Model.AllIngredients[i].Selected" type="checkbox" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">@Model.AllIngredients[i].IngredientName</label>
+                        <input asp-for="@Model.AllIngredients[i].IngredientId" type="hidden" />
+                        <input asp-for="@Model.AllIngredients[i].IngredientName" type="hidden" />
+                    }
+                </li>
+            }
+        </ul>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+
+<a asp-controller="Admin" asp-action="ManageIngredients">Manage ingredients</a>
+@*<a asp-controller="Admin" asp-action="DeleteFood" asp-route-id="@Model.CurrentFood.FoodId">Delete</a>*@
+
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.17.0/jquery.validate.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"></script>

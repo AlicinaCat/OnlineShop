@@ -1,0 +1,32 @@
+﻿@model Online_Shop.ViewModels.ViewModelFood
+
+<h1>View profile</h1>
+
+<table>
+    <tr>
+        <td>Username: </td>
+        <td>@Model.CurrentCustomer.Username</td>
+    </tr>
+    <tr>
+        <td>Email: </td>
+        <td>@Model.CurrentCustomer.Email</td>
+    </tr>
+    <tr>
+        <td>Phone: </td>
+        <td>@Model.CurrentCustomer.Phone</td>
+    </tr>
+    <tr>
+        <td>Address: </td>
+        <td>@Model.CurrentCustomer.Address</td>
+    </tr>
+    <tr>
+        <td>City: </td>
+        <td>@Model.CurrentCustomer.City</td>
+    </tr>
+    <tr>
+        <td>Postal code: </td>
+        <td>@Model.CurrentCustomer.PostalCode</td>
+    </tr>
+</table>
+
+<a asp-controller="Home" asp-action="EditProfile">Edit profile</a>

@@ -1,0 +1,74 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutNotLoggedIn.cshtml";
+}
+
+@using Microsoft.AspNetCore.Identity
+@using Online_Shop.ModelsIdentity
+
+@model Online_Shop.ViewModels.ViewModelFood
+
+<h1>Manage users</h1>
+
+<table class="table">
+    <tr>
+        <th>
+            Username
+        </th>
+        <th align="center">
+            Premium
+        </th>
+        <th align="center">
+            Admin
+        </th>
+    </tr>
+
+    @foreach (var item in Model.AllUsers)
+    {
+        <tr>
+            <td>
+                @item.UserName
+            </td>
+            <td align="center">
+                <form asp-controller="Admin" asp-action="ChangeMembership" method="post">
+                    <input asp-for="@Model.CurrentUser.Id" value="@item.Id" type="hidden" />
+
+                    @if (item.isPremium)
+                    {
+                        <input class="form-check-input" asp-for="@Model.CurrentUser.isPremium"
+                               onchange="this.form.submit()"
+                               type="checkbox" id="defaultCheck1" checked>
+                    }
+                    else
+                    {
+                        <input class="form-check-input" asp-for="@Model.CurrentUser.isPremium"
+                               onchange="this.form.submit()"
+                               type="checkbox" id="defaultCheck1">
+                    }
+
+                </form>
+
+            </td>
+            <td align="center">
+                <form asp-controller="Admin" asp-action="ChangeAdmin" method="post">
+                    <input asp-for="@Model.CurrentUser.Id" value="@item.Id" type="hidden" />
+
+                    @if (item.isAdmin)
+                    {
+                        <input class="form-check-input" asp-for="@Model.CurrentUser.isAdmin"
+                               onchange="this.form.submit()"
+                               type="checkbox" id="defaultCheck1" checked>
+                    }
+                    else
+                    {
+                        <input class="form-check-input" asp-for="@Model.CurrentUser.isAdmin"
+                               onchange="this.form.submit()"
+                               type="checkbox" id="defaultCheck1">
+                    }
+
+                </form>
+
+            </td>
+
+        </tr>
+    }
+</table>
