@@ -89,6 +89,40 @@ namespace Online_Shop.Controllers
             return RedirectToAction("ManageMenu");
         }
 
+        public IActionResult AddFood()
+        {
+            var model = GetViewModel();
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult AddFood(ViewModelFood model)
+        {
+            Food food = new Food();
+            food.Name = model.CurrentFood.Name;
+            food.CategoryId = model.CurrentFood.CategoryId;
+            food.Price = model.CurrentFood.Price;
+
+            _context.Food.Add(food);
+            _context.SaveChanges();
+
+            foreach (var item in model.AllIngredients)
+            {
+                if (item.Selected == true)
+                {
+                        FoodIngredient foodIng = new FoodIngredient();
+                        foodIng.FoodId = model.CurrentFood.FoodId;
+                        foodIng.IngredientId = item.IngredientId;
+
+                        _context.Add(foodIng);
+                        _context.SaveChanges();
+                }
+            }
+
+            return RedirectToAction("ManageMenu");
+        }
+
         public IActionResult ManageIngredients()
         {
             var model = GetViewModel();

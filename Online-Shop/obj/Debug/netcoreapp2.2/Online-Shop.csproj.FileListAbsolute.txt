@@ -40,3 +40,4 @@
 /Users/alicina/Projects/Online-Shop/Online-Shop/obj/Debug/netcoreapp2.2/Razor/Views/Admin/ManageUsers.g.cshtml.cs
 /Users/alicina/Projects/Online-Shop/Online-Shop/obj/Debug/netcoreapp2.2/Razor/Views/Admin/EditMenu.g.cshtml.cs
 /Users/alicina/Projects/Online-Shop/Online-Shop/obj/Debug/netcoreapp2.2/Razor/Views/Admin/ManageIngredients.g.cshtml.cs
+/Users/alicina/Projects/Online-Shop/Online-Shop/obj/Debug/netcoreapp2.2/Razor/Views/Admin/AddFood.g.cshtml.cs
