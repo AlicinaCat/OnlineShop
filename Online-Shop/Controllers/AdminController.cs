@@ -208,6 +208,51 @@ namespace Online_Shop.Controllers
             return View(model);
         }
 
+        [HttpPost]
+        public IActionResult ChangeMembership(ViewModelFood model)
+        {
+            if (model.CurrentUser.isPremium)
+            {
+                AspNetUserRoles role = new AspNetUserRoles();
+                role.RoleId = ("F4F4367D-940C-4FD7-A848-137508F418C1");
+                role.UserId = model.CurrentUser.Id;
+
+                _context.AspNetUserRoles.Add(role);
+                _context.SaveChanges();
+            }
+            else
+            {
+                var role = _context.AspNetUserRoles.SingleOrDefault(r => r.UserId == model.CurrentUser.Id && 
+                                                            r.RoleId == "F4F4367D-940C-4FD7-A848-137508F418C1");
+                _context.Remove(role);
+                _context.SaveChanges();
+            }
+
+            return RedirectToAction("ManageUsers");
+        }
+
+        public IActionResult ChangeAdmin(ViewModelFood model)
+        {
+            if (model.CurrentUser.isAdmin)
+            {
+                AspNetUserRoles role = new AspNetUserRoles();
+                role.RoleId = ("1F6CE05B-A599-4985-9AB0-87A5BBAE970A");
+                role.UserId = model.CurrentUser.Id;
+
+                _context.AspNetUserRoles.Add(role);
+                _context.SaveChanges();
+            }
+            else
+            {
+                var role = _context.AspNetUserRoles.SingleOrDefault(r => r.UserId == model.CurrentUser.Id &&
+                                                            r.RoleId == "1F6CE05B-A599-4985-9AB0-87A5BBAE970A");
+                _context.Remove(role);
+                _context.SaveChanges();
+            }
+
+            return RedirectToAction("ManageUsers");
+        }
+
         public ViewModelFood GetViewModel()
         {
             ViewModelFood model = new ViewModelFood();
