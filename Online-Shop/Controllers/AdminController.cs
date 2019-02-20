@@ -183,6 +183,24 @@ namespace Online_Shop.Controllers
             return RedirectToAction("ManageOrders");
         }
 
+        public IActionResult RemoveOrder(int id)
+        {
+            var foodOrders = _context.FoodOrder.Where(f => f.OrderId == id).ToList();
+
+            foreach(var item in foodOrders)
+            {
+                _context.Remove(item);
+                _context.SaveChanges();
+            }
+
+            var order = _context.Order.SingleOrDefault(o => o.OrderId == id);
+
+            _context.Remove(order);
+            _context.SaveChanges();
+
+            return RedirectToAction("ManageOrders");
+        }
+
         public IActionResult ManageUsers()
         {
             return View();
