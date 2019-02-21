@@ -1,5 +1,9 @@
 ﻿footer {
-    background-color: #c2cad6;
+    background-color: #08e083;
+    bottom: 0;
+    display: block;
+    width: 100%;
+    height: 15%;
 }
 
 .ingredients li {
@@ -11,5 +15,22 @@
 }
 
 #account-nav li {
+    text-align: right;
+}
+
+.jumbotron {
+    background: url('../pics/header.jpg') no-repeat center center;
+    background-color: #2a700e;
+    color: white;
+}
+
+#content {
+    top: 50px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+}
+
+#cart-total {
     text-align: right;
 }

@@ -3,7 +3,7 @@
 {
     <h1>Shopping cart</h1>
 
-    <table>
+    <table class="table">
         @foreach (var item in Model.CartList)
         {
             <tr>
@@ -24,7 +24,7 @@
         }
     </table>
 
-    <p>Total: @Model.CartList.Sum(f => f.Price)</p>
+    <p id="cart-total">Total: @Model.CartList.Sum(f => f.Price)</p>
 }
 else
 {

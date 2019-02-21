@@ -35,5 +35,6 @@
   <ItemGroup>
     <Content Remove="Views\Home\SubmitOrder.cshtml" />
     <Content Remove="Views\Admin\EditIngredient.cshtml" />
+    <Content Remove="wwwroot\pics\D74D35C4C22DA307_Pizza-Home-ka-Pizza.jpg" />
   </ItemGroup>
 </Project>
