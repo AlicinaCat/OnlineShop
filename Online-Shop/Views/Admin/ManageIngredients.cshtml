@@ -6,7 +6,7 @@
     <div class="form-group">
         <input type="text" asp-for="CurrentIngredient.IngredientName" class="form-control" id="inputName4" placeholder="Name">
         <span asp-validation-for="CurrentIngredient.IngredientName" style="color: red;"></span>
-        <input type="submit" value="Add" />
+        <input class="btn btn-primary btn-sm" type="submit" value="Add" />
     </div>
 </form>
 
@@ -15,15 +15,15 @@
     {
         <tr>
             <td>
-                <form a asp-controller="Admin" asp-action="EditIngredient" method="post">
+                <form asp-controller="Admin" asp-action="EditIngredient" method="post">
                     <input type="text" asp-for="@Model.CurrentIngredient.IngredientName" value="@item.IngredientName" />
                     <input type="hidden" asp-for="@Model.CurrentIngredient.IngredientId" value="@item.IngredientId" />
-                    <input type="submit" value="Save" />
+                    <input class="btn btn-primary btn-sm" type="submit" value="Save" />
                 </form>
             </td>
-            <td>
+            @*<td>
                 <a asp-controller="Admin" asp-action="RemoveIngredient" asp-route-id="@item.IngredientId">Delete</a>
-            </td>
+            </td>*@
         </tr>
     }
 </table>

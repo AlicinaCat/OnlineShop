@@ -1,10 +1,5 @@
 ﻿footer {
     background-color: #e52020;
-    /* bottom: 0;
-    display: block;
-    width: 100%;
-    height: 15%;
-    color: #ffffff; */
 }
 
 .ingredients li {
@@ -24,6 +19,11 @@
     background-color: #ffffff;
     color: #ffffff;
 }
+
+    .jumbotron h1 {
+        color: #ffffff;
+        text-align: left;
+    }
 
 .bg-light {
     background-color: #e52020 !important;
@@ -53,12 +53,30 @@
     color: white;
 }
 
-.btn:not(:disabled):not(.disabled) {
-    cursor: pointer;
-    background-color: green;
-    color: white;
-}
-
 .text-primary {
     color: red !important;
+}
+
+h3 {
+    color: red;
+}
+
+h1 {
+    color: red;
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: red;
+    border-color: white;
+}
+
+.btn-primary:hover {
+    background-color: #ff4444;
+    border-color: white;
+}
+
+.btn-outline-success {
+    color: white;
+    background-color: #64d17d;
 }

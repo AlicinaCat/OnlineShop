@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Online_Shop.Models
@@ -15,6 +16,8 @@ namespace Online_Shop.Models
         }
 
         public int FoodId { get; set; }
+
+        [Required(ErrorMessage = "Please fill in the username.")]
         public string Name { get; set; }
         public string Description { get; set; }
         public int Price { get; set; }

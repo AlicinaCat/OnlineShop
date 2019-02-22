@@ -30,7 +30,7 @@
 
                             }
                         </ul>
-                        <a asp-controller="Home" asp-action="AddToCart" asp-route-id="@item.FoodId"
+                        <a class="btn btn-primary btn-sm" asp-controller="Home" asp-action="AddToCart" asp-route-id="@item.FoodId"
                            data-ajax="true"
                            data-ajax-method="GET"
                            data-ajax-mode="replace"
@@ -59,11 +59,13 @@
 
                             }
                         </ul>
-                        <a asp-controller="Home" asp-action="AddToCart" asp-route-id="@item.FoodId"
+                        <a class="btn btn-primary btn-sm" asp-controller="Home" asp-action="AddToCart" asp-route-id="@item.FoodId"
                            data-ajax="true"
                            data-ajax-method="GET"
                            data-ajax-mode="replace"
-                           data-ajax-update="#shopping-cart">Add to cart</a>
+                           data-ajax-update="#shopping-cart">
+                            Add to cart
+                        </a>
                     </p>
                 </div>
             }
@@ -88,7 +90,7 @@
 
                             }
                         </ul>
-                        <a asp-controller="Home" asp-action="AddToCart" asp-route-id="@item.FoodId"
+                        <a class="btn btn-primary btn-sm" asp-controller="Home" asp-action="AddToCart" asp-route-id="@item.FoodId"
                            data-ajax="true"
                            data-ajax-method="GET"
                            data-ajax-mode="replace"
