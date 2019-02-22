@@ -1,9 +1,10 @@
 ﻿footer {
-    background-color: #08e083;
-    bottom: 0;
+    background-color: #e52020;
+    /* bottom: 0;
     display: block;
     width: 100%;
     height: 15%;
+    color: #ffffff; */
 }
 
 .ingredients li {
@@ -20,8 +21,13 @@
 
 .jumbotron {
     background: url('../pics/header.jpg') no-repeat center center;
-    background-color: #2a700e;
-    color: white;
+    background-color: #ffffff;
+    color: #ffffff;
+}
+
+.bg-light {
+    background-color: #e52020 !important;
+    color: #ffffff !important;
 }
 
 #content {
@@ -33,4 +39,26 @@
 
 #cart-total {
     text-align: right;
+}
+
+.navbar-light .navbar-brand {
+    color: white;
+}
+
+.navbar-light .navbar-nav .active > .nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show > .nav-link {
+    color: white;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: white;
+}
+
+.btn:not(:disabled):not(.disabled) {
+    cursor: pointer;
+    background-color: green;
+    color: white;
+}
+
+.text-primary {
+    color: red !important;
 }

@@ -1,9 +1,13 @@
 ﻿@model Online_Shop.ViewModels.ViewModelFood
 
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
 <h1>Edit profile</h1>
 
 <form asp-controller="Home" asp-action="EditProfile" method="post">
-    <input type="hidden" asp-for="RegisterUser.Username" value="@Model.RegisterUser.Username"/>
+    <input type="hidden" asp-for="RegisterUser.Username" value="@Model.RegisterUser.Username" />
     <div class="form-group">
         <label asp-for="RegisterUser.Name">Name</label>
         <input type="text" asp-for="RegisterUser.Name" class="form-control" id="inputName4" placeholder="Full name">
