@@ -2,6 +2,7 @@
 @model Online_Shop.ViewModels.ViewModelFood
 
 <h1>Manage orders</h1>
+<hr class="accent my-5">
 
 <table class="table">
     <tr>
@@ -62,7 +63,7 @@
                 @item.Customer.Username
             </td>
             <td>
-                <a asp-controller="Admin" asp-action="RemoveOrder" asp-route-id="@item.OrderId">Delete</a>
+                <a asp-controller="Admin" asp-action="RemoveOrder" asp-route-id="@item.OrderId"><i class="fas fa-trash-alt"></i></a>
             </td>
         </tr>
     }

@@ -1,33 +1,41 @@
 ﻿@model Online_Shop.ViewModels.ViewModelFood
-@if (Model.CartList.Count > 0)
-{
-    <h1>Shopping cart</h1>
 
-    <table class="table">
-        @foreach (var item in Model.CartList)
-        {
-            <tr>
-                <td>
-                    @item.Name
-                </td>
-                <td>@item.Price</td>
-                <td>
-                    <a asp-controller="Home" asp-action="RemoveFromCart" asp-route-id="@item.FoodId"
-                       data-ajax="true"
-                       data-ajax-method="GET"
-                       data-ajax-mode="replace"
-                       data-ajax-update="#shopping-cart">
-                        Remove
-                    </a>
-                </td>
-            </tr>
-        }
-    </table>
+     <h1>Shopping cart</h1>
+    <hr class="accent my-5">
 
-    <p id="cart-total">Total: @Model.CartList.Sum(f => f.Price)</p>
-}
-else
-{
-    <h1>Shopping cart</h1>
-    <p>Your shopping cart is empty.</p>
-}
+    <div class="row">
+        <div class="col-md-12 order-md-2 mb-4">
+            <h4 class="d-flex justify-content-between align-items-center mb-3">
+                <span class="text-muted">Your cart</span>
+                <span class="badge badge-secondary badge-pill">@Model.CartList.Count</span>
+            </h4>
+            <ul class="list-group mb-3">
+                @foreach (var item in Model.CartList)
+                {
+                    <li class="list-group-item d-flex justify-content-between lh-condensed">
+                        <div>
+                            <h6 class="my-0">
+                                <a asp-controller="Home" asp-action="RemoveFromCart" asp-route-id="@item.FoodId"
+                                   data-ajax="true"
+                                   data-ajax-method="GET"
+                                   data-ajax-mode="replace"
+                                   data-ajax-update="#shopping-cart">
+                                    <i class="far fa-times-circle"></i>
+                                </a>
+                                @item.Name
+                            </h6>
+
+
+                        </div>
+                        <span class="text-muted">@item.Price kr </span>
+                    </li>
+                }
+
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>Total: </span>
+                    <strong>@Model.CartList.Sum(f => f.Price) kr</strong>
+                </li>
+            </ul>
+            <a class="btn btn-primary float-right" asp-controller="Home" asp-action="Checkout">Checkout</a>
+        </div>
+    </div>

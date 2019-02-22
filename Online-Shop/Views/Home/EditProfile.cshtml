@@ -5,6 +5,7 @@
 }
 
 <h1>Edit profile</h1>
+<hr class="accent my-5">
 
 <form asp-controller="Home" asp-action="EditProfile" method="post">
     <input type="hidden" asp-for="RegisterUser.Username" value="@Model.RegisterUser.Username" />
@@ -42,6 +43,8 @@
     </div>
     <button type="submit" class="btn btn-primary">Save</button>
 </form>
+
+<a asp-controller="Home" asp-action="ViewProfile"><i class="fas fa-chevron-circle-left"></i> Profile</a>
 
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
 <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.17.0/jquery.validate.min.js"></script>

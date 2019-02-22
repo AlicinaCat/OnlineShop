@@ -1,13 +1,16 @@
 ﻿@model Online_Shop.ViewModels.ViewModelFood
 
 <h1>Manage menu</h1>
+<hr class="accent my-5">
 
-<a asp-controller="Admin" asp-action="AddFood">Add new food</a>
-<table>
-    @foreach (var item in Model.AllFoods)
+<a class="btn btn-primary" asp-controller="Admin" asp-action="AddFood"><i class="fas fa-plus"></i> Add new food</a><br />
+<table class="table table-striped">
+    @foreach (var item in Model.AllFoods.OrderBy(f => f.Name))
     {
         <tr>
             <td>@item.Name</td>
+            <td></td>
+            <td></td>
         </tr>
         <tr>
             <td>
@@ -26,8 +29,9 @@
                 @item.Price
             </td>
             <td>
-                <a asp-controller="Admin" asp-action="EditMenu" asp-route-id="@item.FoodId">Edit</a>
+                <a asp-controller="Admin" asp-action="EditMenu" asp-route-id="@item.FoodId"><i class="fas fa-pencil-alt"></i></a>
             </td>
         </tr>
     }
 </table>
+<a class="btn btn-primary" asp-controller="Admin" asp-action="AddFood"><i class="fas fa-plus"></i> Add new food</a>

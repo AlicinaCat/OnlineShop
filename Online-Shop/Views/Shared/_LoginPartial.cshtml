@@ -8,17 +8,18 @@
 {
 <ul id="account-nav" class="navbar-nav mt-2 mt-lg-0">
     <li class="nav-item">
-        <a class="nav-link" asp-controller="Home" asp-action="ViewProfile">@User.Identity.Name</a>
+        <a class="nav-link" asp-controller="Home" asp-action="ViewProfile"><i class="fas fa-user-alt"></i> @User.Identity.Name</a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" asp-controller="Account" asp-action="Logout">Log out</a>
-    </li>
+
     @if (User.IsInRole("Administrator"))
     {
         <li class="nav-item">
-            <a class="nav-link" asp-controller="Admin" asp-action="Index">Admin</a>
+            <a class="nav-link" asp-controller="Admin" asp-action="Index"><i class="fas fa-tools"></i> Admin</a>
         </li>
     }
+    <li class="nav-item">
+        <a class="nav-link" asp-controller="Account" asp-action="Logout">Log out</a>
+    </li>
 </ul>
 }
 else

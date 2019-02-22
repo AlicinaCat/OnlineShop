@@ -4,102 +4,123 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container">
+<div id="top" class="container">
     <div class="row">
         <div class="col-lg-10 mx-auto col-12 text-center mb-3">
             <h1 class="mt-0 text-primary">Our Menu</h1>
+            <hr class="accent my-5">
             <p class="lead">Begin with a selection from our award winning beverage menu or choose a wine from our extensive wine list. Our wine list features over 100 different vintages and has received the chamber of commerce award of excellence.</p>
         </div>
-        <div class="col-12 mt-4">
+        <div id="pizza" class="col-12 mt-4">
             <h3 class="text-center">Pizza</h3>
-            <hr class="accent my-5">
-        </div>
-        <div class="card-columns">
-            @foreach (var item in Model.AllFoods.Where(c => c.CategoryId == 1))
-            {
-                <div class="card card-body">
-                    <span class="float-right font-weight-bold">@item.Price</span>
-                    <h6 class="text-truncate">@item.Name</h6>
-                    <p class="small">
-                        <ul class="ingredients" style="padding: 0">
-                            @foreach (var ing in item.Ingredients)
-                            {
-                                <li>
-                                    @ing.IngredientName
-                                </li>
+            <hr class="accent my-3">
 
-                            }
-                        </ul>
-                        <a class="btn btn-primary btn-sm" asp-controller="Home" asp-action="AddToCart" asp-route-id="@item.FoodId"
-                           data-ajax="true"
-                           data-ajax-method="GET"
-                           data-ajax-mode="replace"
-                           data-ajax-update="#shopping-cart">Add to cart</a>
-                    </p>
-                </div>
+
+
+            @foreach (var item in Model.AllFoods.Where(c => c.CategoryId == 1).OrderBy(f => f.Price))
+            {
+                <div class="text-center">
+
+                    <div class="card">
+                        <h5 class="card-header">@item.Name</h5>
+                        <div class="card-body">
+
+                            <p class="card-text">
+                                <ul class="ingredients" style="padding: 0">
+                                    @foreach (var ing in item.Ingredients)
+                                    {
+                                        <li>
+                                            @ing.IngredientName
+                                        </li>
+                                    }
+                                </ul>
+                            </p>
+                            <h5 class="card-title">@item.Price kr</h5>
+                            <a class="btn btn-primary btn-sm" asp-controller="Home" asp-action="AddToCart" asp-route-id="@item.FoodId"
+                               data-ajax="true"
+                               data-ajax-method="GET"
+                               data-ajax-mode="replace"
+                               data-ajax-update="#shopping-cart">Add to cart <i class="fas fa-shopping-cart"></i></a>
+                        </div>
+                    </div>
+                </div><br />
             }
+
         </div>
-        <div class="col-12 mt-4">
+
+        <div id="pasta" class="col-12 mt-4">
             <h3 class="text-center">Pasta</h3>
-            <hr class="accent my-5">
-        </div>
-        <div class="card-columns">
-            @foreach (var item in Model.AllFoods.Where(c => c.CategoryId == 2))
-            {
-                <div class="card card-body">
-                    <span class="float-right font-weight-bold">@item.Price</span>
-                    <h6 class="text-truncate">@item.Name</h6>
-                    <p class="small">
-                        <ul class="ingredients" style="padding: 0">
-                            @foreach (var ing in item.Ingredients)
-                            {
-                                <li>
-                                    @ing.IngredientName
-                                </li>
+            <hr class="accent my-3">
 
-                            }
-                        </ul>
-                        <a class="btn btn-primary btn-sm" asp-controller="Home" asp-action="AddToCart" asp-route-id="@item.FoodId"
-                           data-ajax="true"
-                           data-ajax-method="GET"
-                           data-ajax-mode="replace"
-                           data-ajax-update="#shopping-cart">
-                            Add to cart
-                        </a>
-                    </p>
-                </div>
+
+            @foreach (var item in Model.AllFoods.Where(c => c.CategoryId == 2).OrderBy(f => f.Price))
+            {
+                <div class="text-center">
+
+                    <div class="card">
+                        <h5 class="card-header">@item.Name</h5>
+                        <div class="card-body">
+
+                            <p class="card-text">
+                                <ul class="ingredients" style="padding: 0">
+                                    @foreach (var ing in item.Ingredients)
+                                    {
+                                        <li>
+                                            @ing.IngredientName
+                                        </li>
+                                    }
+                                </ul>
+                            </p>
+                            <h5 class="card-title">@item.Price kr</h5>
+                            <a class="btn btn-primary btn-sm" asp-controller="Home" asp-action="AddToCart" asp-route-id="@item.FoodId"
+                               data-ajax="true"
+                               data-ajax-method="GET"
+                               data-ajax-mode="replace"
+                               data-ajax-update="#shopping-cart">Add to cart <i class="fas fa-shopping-cart"></i></a>
+                        </div>
+                    </div>
+                </div><br />
             }
+
         </div>
-        <div class="col-12 mt-4">
+
+        <div id="salad" class="col-12 mt-4">
             <h3 class="text-center">Salad</h3>
-            <hr class="accent my-5">
-        </div>
-        <div class="card-columns">
-            @foreach (var item in Model.AllFoods.Where(c => c.CategoryId == 3))
+            <hr class="accent my-3">
+
+
+            @foreach (var item in Model.AllFoods.Where(c => c.CategoryId == 3).OrderBy(f => f.Price))
             {
-                <div class="card card-body">
-                    <span class="float-right font-weight-bold">@item.Price</span>
-                    <h6 class="text-truncate">@item.Name</h6>
-                    <p class="small">
-                        <ul class="ingredients" style="padding: 0">
-                            @foreach (var ing in item.Ingredients)
-                            {
-                                <li>
-                                    @ing.IngredientName
-                                </li>
+                <div class="text-center">
 
-                            }
-                        </ul>
-                        <a class="btn btn-primary btn-sm" asp-controller="Home" asp-action="AddToCart" asp-route-id="@item.FoodId"
-                           data-ajax="true"
-                           data-ajax-method="GET"
-                           data-ajax-mode="replace"
-                           data-ajax-update="#shopping-cart">Add to cart</a>
-                    </p>
+                    <div class="card">
+                        <h5 class="card-header">@item.Name</h5>
+                        <div class="card-body">
+
+                            <p class="card-text">
+                                <ul class="ingredients" style="padding: 0">
+                                    @foreach (var ing in item.Ingredients)
+                                    {
+                                        <li>
+                                            @ing.IngredientName
+                                        </li>
+                                    }
+                                </ul>
+                            </p>
+                            <h5 class="card-title">@item.Price kr</h5>
+                            <a class="btn btn-primary btn-sm" asp-controller="Home" asp-action="AddToCart" asp-route-id="@item.FoodId"
+                               data-ajax="true"
+                               data-ajax-method="GET"
+                               data-ajax-mode="replace"
+                               data-ajax-update="#shopping-cart">Add to cart <i class="fas fa-shopping-cart"></i></a>
+                        </div>
+                    </div>
                 </div>
+                <br />
             }
+
         </div>
 
-
+        <a href="#top"><i class="fas fa-chevron-circle-up"></i> Back to start</a>
     </div>
 </div>

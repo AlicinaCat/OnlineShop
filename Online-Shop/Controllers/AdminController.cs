@@ -259,7 +259,7 @@ namespace Online_Shop.Controllers
             ViewModelFood model = new ViewModelFood();
             model.AllFoods = _context.Food.ToList();
             model.AllFoodIngredients = _context.FoodIngredient.ToList();
-            model.AllIngredients = _context.Ingredient.ToList();
+            model.AllIngredients = _context.Ingredient.OrderBy(i => i.IngredientName).ToList();
             model.AllFoodOrders = _context.FoodOrder.ToList();
             model.AllOrders = _context.Order.ToList();
             model.AllUsers = _context.AspNetUsers.ToList();

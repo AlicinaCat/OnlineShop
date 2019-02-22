@@ -5,32 +5,35 @@
 }
 
 <h1>View profile</h1>
+<hr class="accent my-5">
 
-<table>
+<table class="table table-striped">
     <tr>
-        <td>Username: </td>
+        <td>Username </td>
         <td>@Model.CurrentCustomer.Username</td>
     </tr>
     <tr>
-        <td>Email: </td>
+        <td>Email </td>
         <td>@Model.CurrentCustomer.Email</td>
     </tr>
     <tr>
-        <td>Phone: </td>
+        <td>Phone </td>
         <td>@Model.CurrentCustomer.Phone</td>
     </tr>
     <tr>
-        <td>Address: </td>
+        <td>Address </td>
         <td>@Model.CurrentCustomer.Address</td>
     </tr>
     <tr>
-        <td>City: </td>
+        <td>City </td>
         <td>@Model.CurrentCustomer.City</td>
     </tr>
     <tr>
-        <td>Postal code: </td>
+        <td>Postal code </td>
         <td>@Model.CurrentCustomer.PostalCode</td>
     </tr>
 </table>
 
-<a asp-controller="Home" asp-action="EditProfile">Edit profile</a>
+<a asp-controller="Home" asp-action="EditProfile"><i class="fas fa-pencil-alt"></i> Edit profile</a>
+<br />
+<a asp-controller="Home" asp-action="Index"><i class="fas fa-chevron-circle-left"></i> Menu</a>

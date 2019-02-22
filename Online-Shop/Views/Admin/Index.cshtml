@@ -1,9 +1,10 @@
 ﻿
 <h1>Admin</h1>
+<hr class="accent my-5">
 
-<ul>
-    <li><a asp-controller="Admin" asp-action="ManageMenu">Manage menu</a></li>
-    <li><a asp-controller="Admin" asp-action="ManageIngredients">Manage ingredients</a></li>
-    <li><a asp-controller="Admin" asp-action="ManageOrders">Manage orders</a></li>
-    <li><a asp-controller="Admin" asp-action="ManageUsers">Manage users</a></li>
+<ul class="list-unstyled list-group list-group-flush">
+    <li><a class="list-group-item" asp-controller="Admin" asp-action="ManageMenu"><i class="fas fa-pizza-slice"></i> Manage menu </a></li>
+    <li><a class="list-group-item" asp-controller="Admin" asp-action="ManageIngredients"><i class="fas fa-apple-alt"></i> Manage ingredients </a></li>
+    <li><a class="list-group-item" asp-controller="Admin" asp-action="ManageOrders"><i class="far fa-list-alt"></i> Manage orders </a></li>
+    <li><a class="list-group-item" asp-controller="Admin" asp-action="ManageUsers"><i class="fas fa-users"></i> Manage users </a></li>
 </ul>

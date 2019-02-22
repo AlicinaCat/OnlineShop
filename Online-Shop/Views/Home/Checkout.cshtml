@@ -7,44 +7,39 @@
 
 
 <h1>Checkout</h1>
+<hr class="accent my-5">
 
-<div id="cart-list">
-    @if (Model.CartList.Count > 0)
-    {
-        <p>
-            Order overview:
-
-            <table class="table">
-                @foreach (var item in Model.CartList)
-                {
-                    <tr>
-                        <td>
-                            @item.Name
-                        </td>
-                        <td>
-                            @item.Price
-                        </td>
-                        <td>
-                            <a asp-controller="Home" asp-action="RemoveFromCheckout" asp-route-id="@item.FoodId">
-                                Remove
-                            </a>
-                        </td>
-                    </tr>
-                }
-            </table>
-
-            @if (User.IsInRole("Premium"))
+<div class="row">
+    <div class="col-md-12 order-md-2 mb-4">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+            <span class="text-muted">Your cart</span>
+            <span class="badge badge-secondary badge-pill">@Model.CartList.Count</span>
+        </h4>
+        <ul class="list-group mb-3">
+            @foreach (var item in Model.CartList)
             {
-                <label>Points:</label> @Model.CurrentCustomer.Points
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                    <div>
+                        <h6 class="my-0">
+                            <a asp-controller="Home" asp-action="RemoveFromCheckout" asp-route-id="@item.FoodId">
+                                <i class="far fa-times-circle"></i>
+                            </a>
+                            @item.Name
+                        </h6>
+
+
+                    </div>
+                    <span class="text-muted">@item.Price kr </span>
+                </li>
             }
 
-            <h3>Total: @Model.CartList.Sum(f => f.Price)</h3>
-
-        </p>
-        <a asp-controller="Home" asp-action="SubmitOrder"><button>Submit order</button></a>
-    }
-    else
-    {
-        <p>Your shopping cart is empty.</p>
-    }
+            <li class="list-group-item d-flex justify-content-between">
+                <span><h3>Total: </h3></span>
+                <strong><h3>@Model.CartList.Sum(f => f.Price) kr</h3></strong>
+            </li>
+        </ul>
+        <a class="btn btn-primary float-right" asp-controller="Home" asp-action="SubmitOrder">Submit order</a>
+    </div>
 </div>
+
+<a asp-controller="Home" asp-action="Index"><i class="fas fa-chevron-circle-left"></i> Menu</a>

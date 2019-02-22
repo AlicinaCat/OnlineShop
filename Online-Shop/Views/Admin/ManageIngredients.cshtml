@@ -1,12 +1,13 @@
 ﻿@model Online_Shop.ViewModels.ViewModelFood
 
 <h1>Manage ingredients</h1>
+<hr class="accent my-5">
 
 <form asp-controller="Admin" asp-action="ManageIngredients" method="post">
     <div class="form-group">
         <input type="text" asp-for="CurrentIngredient.IngredientName" class="form-control" id="inputName4" placeholder="Name">
+        <button class="btn btn-primary" type="submit"><i class="fas fa-plus"></i> Add</button>
         <span asp-validation-for="CurrentIngredient.IngredientName" style="color: red;"></span>
-        <input class="btn btn-primary btn-sm" type="submit" value="Add" />
     </div>
 </form>
 
