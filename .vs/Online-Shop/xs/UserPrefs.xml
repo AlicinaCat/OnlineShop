@@ -1,5 +1,5 @@
 ﻿<Properties GitUserInfo="UsingMD" StartupConfiguration="{0AD0DFF3-388F-41AD-A69A-0D09F61B26A2}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Online-Shop/Models/LoginUser.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Online-Shop/Views/Admin/ManageIngredients.cshtml">
     <Files>
       <File FileName="Online-Shop/Views/Shared/_LoginPartial.cshtml" Line="9" Column="39" />
       <File FileName="Online-Shop/Views/Shared/_Layout.cshtml" Line="13" Column="17" />
@@ -35,15 +35,16 @@
       <File FileName="Online-Shop/Models/Category.cs" Line="1" Column="1" />
       <File FileName="Online-Shop/wwwroot/css/style.css" Line="76" Column="24" />
       <File FileName="Online-Shop/Models/AspNetUserRoles.cs" Line="1" Column="1" />
-      <File FileName="Online-Shop/Models/Food.cs" Line="23" Column="9" />
+      <File FileName="Online-Shop/Models/Food.cs" Line="33" Column="2" />
       <File FileName="Online-Shop/Models/Customer.cs" Line="1" Column="1" />
       <File FileName="Online-Shop/Models/AspNetUsers.cs" Line="1" Column="1" />
-      <File FileName="Online-Shop/Models/Ingredient.cs" Line="16" Column="1" />
+      <File FileName="Online-Shop/Models/Ingredient.cs" Line="16" Column="15" />
       <File FileName="Online-Shop/Models/AspNetRoles.cs" Line="1" Column="1" />
       <File FileName="Online-Shop Status" />
       <File FileName="Online-Shop/appsettings.json" Line="1" Column="1" />
       <File FileName="Online-Shop/appsettings.Development.json" Line="1" Column="1" />
-      <File FileName="Online-Shop/Models/LoginUser.cs" Line="1" Column="1" />
+      <File FileName="Online-Shop/Models/LoginUser.cs" Line="8" Column="1" />
+      <File FileName="Online-Shop/Views/Admin/ManageIngredients.cshtml" Line="31" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.ItemProperties.Online-Shop PreferredExecutionTarget="MonoDevelop.Default" />

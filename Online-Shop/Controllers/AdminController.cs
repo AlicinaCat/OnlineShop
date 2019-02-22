@@ -74,7 +74,8 @@ namespace Online_Shop.Controllers
                 {
                     if (old.CurrentFood.Ingredients.FirstOrDefault(i => i.IngredientId == item.IngredientId) != null)
                     {
-                        var foodIng = _context.FoodIngredient.SingleOrDefault(i => i.IngredientId == item.IngredientId);
+                        var foodIng = _context.FoodIngredient.FirstOrDefault(i => i.IngredientId == item.IngredientId
+                                     && i.FoodId == edited.CurrentFood.FoodId);
 
                         _context.Remove(foodIng);
                         _context.SaveChanges();

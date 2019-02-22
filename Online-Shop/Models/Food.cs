@@ -17,7 +17,7 @@ namespace Online_Shop.Models
 
         public int FoodId { get; set; }
 
-        [Required(ErrorMessage = "Please fill in the username.")]
+        [Required(ErrorMessage = "Please fill in the name.")]
         public string Name { get; set; }
         public string Description { get; set; }
         public int Price { get; set; }

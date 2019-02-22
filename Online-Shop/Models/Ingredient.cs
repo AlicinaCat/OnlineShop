@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Online_Shop.Models
@@ -12,6 +13,7 @@ namespace Online_Shop.Models
         }
 
         public int IngredientId { get; set; }
+        [Required]
         public string IngredientName { get; set; }
 
         [NotMapped]
