@@ -18,8 +18,10 @@ namespace Online_Shop.Models
         public int FoodId { get; set; }
 
         [Required(ErrorMessage = "Please fill in the name.")]
+        [StringLength(50, ErrorMessage = "Max 50 characters.")]
         public string Name { get; set; }
         public string Description { get; set; }
+        [Required(ErrorMessage = "Please choose a valid price.")]
         public int Price { get; set; }
         public int CategoryId { get; set; }
 

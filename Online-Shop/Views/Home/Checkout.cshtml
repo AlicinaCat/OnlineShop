@@ -20,12 +20,12 @@
             {
                 <li class="list-group-item d-flex justify-content-between lh-condensed">
                     <div>
-                        <h6 class="my-0">
+                        <h5 class="my-0">
                             <a asp-controller="Home" asp-action="RemoveFromCheckout" asp-route-id="@item.FoodId">
                                 <i class="far fa-times-circle"></i>
                             </a>
                             @item.Name
-                        </h6>
+                        </h5>
 
 
                     </div>
@@ -33,12 +33,54 @@
                 </li>
             }
 
+            @if (User.IsInRole("Premium"))
+            {
+                if (!((Model.CurrentCustomer.Points + 10 * Model.CartList.Count) >= 100 && (Model.CartList.Count == 1)))
+                {
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span><h4>Premium -20% </h4></span>
+                        <strong><h3>- @(Model.CartList.Sum(f => f.Price) * 0.2) kr</h3></strong>
+                    </li>
+                }
+
+            }
+            @if (User.IsInRole("Premium") && (Model.CurrentCustomer.Points + 10 * Model.CartList.Count) >= 100)
+            {
+                <li class="list-group-item d-flex justify-content-between">
+                    <span><h4>Premium 100 points </h4></span>
+                    <strong><h3>- @(Model.CartList.Min(p => p.Price)) kr</h3></strong>
+                </li>
+            }
             <li class="list-group-item d-flex justify-content-between">
                 <span><h3>Total: </h3></span>
-                <strong><h3>@Model.CartList.Sum(f => f.Price) kr</h3></strong>
+                @if (((Model.CurrentCustomer.Points + 10 * Model.CartList.Count) >= 100 && (Model.CartList.Count == 1)))
+                {
+                    <strong><h3>0 kr </h3></strong>
+                }
+                else if (User.IsInRole("Premium") && (Model.CurrentCustomer.Points + 10 * Model.CartList.Count) >= 100)
+                {
+                    <strong>
+                        <h3>
+                            @(Model.CartList.Sum(f => f.Price) - (Model.CartList.Sum(f => f.Price) * 0.2) -
+                                                                            Model.CartList.Min(f => f.Price)) kr
+                        </h3>
+                    </strong>
+                }
+                else if (User.IsInRole("Premium"))
+                {
+                    <strong><h3>@(Model.CartList.Sum(f => f.Price) - (Model.CartList.Sum(f => f.Price) * 0.2)) kr</h3></strong>
+                }
+                else
+                {
+                    <strong><h3>@(Model.CartList.Sum(f => f.Price)) kr </h3></strong>
+                }
             </li>
         </ul>
-        <a class="btn btn-primary float-right" asp-controller="Home" asp-action="SubmitOrder">Submit order</a>
+        @if (Model.CartList.Count > 0)
+        {
+            <a class="btn btn-primary float-right" asp-controller="Home" asp-action="SubmitOrder">Submit order</a>
+        }
+
     </div>
 </div>
 

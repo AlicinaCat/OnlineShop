@@ -13,8 +13,6 @@ namespace Online_Shop.Models
         [DisplayName("Choose a password")]
         [StringLength(20, ErrorMessage = "Max 20 characters.")]
         [Required(ErrorMessage = "Password is required.")]
-        [RegularExpression(@"^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$", 
-            ErrorMessage = "Must be at least 8 characters and include a number and a special character.")]
         public string Password { get; set; }
         [DisplayName("Full name")]
         [StringLength(50, ErrorMessage = "Max 50 characters.")]
@@ -38,10 +36,12 @@ namespace Online_Shop.Models
         [DisplayName("Phone")]
         [StringLength(15, ErrorMessage = "Max 15 characters.")]
         public string Phone { get; set; }
-
+        public string ErrorMessage { get; set; }
+        public int Points { get; set; }
 
         public RegisterUser()
         {
+            ErrorMessage = "";
         }
     }
 }

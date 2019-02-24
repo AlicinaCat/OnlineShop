@@ -15277,7 +15277,7 @@
       "projectName": "Online-Shop",
       "projectPath": "/Users/alicina/Projects/Online-Shop/Online-Shop/Online-Shop.csproj",
       "packagesPath": "/Users/alicina/.nuget/packages/",
-      "outputPath": "/Users/alicina/Projects/Online-Shop/Online-Shop/obj",
+      "outputPath": "/Users/alicina/Projects/Online-Shop/Online-Shop/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
@@ -15306,14 +15306,14 @@
       "netcoreapp2.2": {
         "dependencies": {
           "Microsoft.AspNetCore.All": {
-            "suppressParent": "All",
             "target": "Package",
             "version": "[2.2.0, )"
           },
           "Microsoft.AspNetCore.App": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "[2.2.0, )"
+            "version": "[2.2.0, )",
+            "autoReferenced": true
           },
           "Microsoft.AspNetCore.Razor.Design": {
             "suppressParent": "All",

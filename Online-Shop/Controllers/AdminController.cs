@@ -46,7 +46,6 @@ namespace Online_Shop.Controllers
         }
 
 
-        // TODO - make this method smaller
         [HttpPost]
         public IActionResult EditMenu(ViewModelFood edited)
         {
@@ -143,7 +142,6 @@ namespace Online_Shop.Controllers
             return RedirectToAction("ManageIngredients");
         }
 
-        // TODO - makes sure you can't delete ingredients from other recipes
         public IActionResult RemoveIngredient(int id)
         {
             var ing = _context.Ingredient.SingleOrDefault(i => i.IngredientId == id);
@@ -218,6 +216,9 @@ namespace Online_Shop.Controllers
                 role.RoleId = ("F4F4367D-940C-4FD7-A848-137508F418C1");
                 role.UserId = model.CurrentUser.Id;
 
+                var cust = _context.Customer.SingleOrDefault(c => c.UserId == role.UserId);
+                cust.Points = 0;
+
                 _context.AspNetUserRoles.Add(role);
                 _context.SaveChanges();
             }
@@ -225,6 +226,10 @@ namespace Online_Shop.Controllers
             {
                 var role = _context.AspNetUserRoles.SingleOrDefault(r => r.UserId == model.CurrentUser.Id && 
                                                             r.RoleId == "F4F4367D-940C-4FD7-A848-137508F418C1");
+
+                var cust = _context.Customer.SingleOrDefault(c => c.UserId == role.UserId);
+                cust.Points = 0;
+
                 _context.Remove(role);
                 _context.SaveChanges();
             }

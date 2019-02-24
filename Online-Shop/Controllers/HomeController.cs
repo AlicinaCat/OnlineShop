@@ -152,6 +152,7 @@ namespace Online_Shop.Controllers
             model.RegisterUser.City = cust.City;
             model.RegisterUser.Username = cust.Username;
             model.RegisterUser.Email = cust.Email;
+            model.RegisterUser.Points = (int)cust.Points;
 
             return View(model);
         }
@@ -172,6 +173,8 @@ namespace Online_Shop.Controllers
             cust.Email = model.RegisterUser.Email;
 
             var old = _context.Customer.SingleOrDefault(c => c.UserId == id);
+
+            cust.Points = old.Points;
 
             cust.CustomerId = old.CustomerId;
             cust.UserId = old.UserId;
@@ -244,6 +247,11 @@ namespace Online_Shop.Controllers
             if (User.IsInRole("Premium"))
             {
                 order.TotalAmount -= (int)(order.TotalAmount * 0.2);
+            }
+
+            if (order.TotalAmount < 0)
+            {
+                order.TotalAmount = 0;
             }
 
             _context.Entry(cust).CurrentValues.SetValues(cust);

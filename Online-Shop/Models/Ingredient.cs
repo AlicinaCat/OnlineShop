@@ -13,7 +13,8 @@ namespace Online_Shop.Models
         }
 
         public int IngredientId { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Please fill in name.")]
+        [StringLength(50, ErrorMessage = "Max 50 characters.")]
         public string IngredientName { get; set; }
 
         [NotMapped]

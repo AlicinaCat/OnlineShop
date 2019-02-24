@@ -12,6 +12,13 @@
         <td>Username </td>
         <td>@Model.CurrentCustomer.Username</td>
     </tr>
+    @if (User.IsInRole("Premium"))
+    {
+        <tr>
+            <td>Premium</td>
+            <td><h6>@Model.CurrentCustomer.Points points</h6></td>
+        </tr>
+    }
     <tr>
         <td>Email </td>
         <td>@Model.CurrentCustomer.Email</td>

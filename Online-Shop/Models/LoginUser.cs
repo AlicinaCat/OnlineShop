@@ -11,9 +11,11 @@ namespace Online_Shop.Models
         public string Password { get; set; }
         [Display(Name = "Remember me")]
         public bool RememberMe  { get; set; }
+        public string ErrorMessage { get; set; }
 
         public LoginUser()
         {
+            ErrorMessage = "";
         }
     }
 }

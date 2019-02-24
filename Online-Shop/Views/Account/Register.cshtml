@@ -4,6 +4,8 @@
 <h1>Sign up</h1>
 <hr class="accent my-5">
 
+<h6>@Model.ErrorMessage</h6>
+
 <form asp-controller="Account" asp-action="Register" method="post">
     <div class="form-group">
         <label asp-for="Name">Name</label>

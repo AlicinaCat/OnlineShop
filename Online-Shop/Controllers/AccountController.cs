@@ -34,7 +34,9 @@ namespace Online_Shop.Controllers
         // GET: /<controller>/
         public IActionResult Register()
         {
-            return View();
+            var model = new RegisterUser();
+
+            return View(model);
         }
 
         [HttpPost]
@@ -46,9 +48,13 @@ namespace Online_Shop.Controllers
             if (result.Succeeded)
             {
                 await _signInManager.SignInAsync(userIdentity, isPersistent: false);
+                return RedirectToAction("RegisterCustomer", "Home", user);
             }
 
-            return RedirectToAction("RegisterCustomer", "Home", user);
+            var model = new RegisterUser();
+            model.ErrorMessage = "The password must be at least 8 characters and include a capital letter, a number and a special character.";
+
+            return View("Register", model);
         }
 
         [HttpGet]
@@ -56,7 +62,9 @@ namespace Online_Shop.Controllers
         {
             await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
 
-            return View();
+            var model = new LoginUser();
+
+            return View(model);
         }
 
         [HttpPost]
@@ -72,7 +80,10 @@ namespace Online_Shop.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-            return RedirectToAction("Login");
+            var model = new LoginUser();
+            model.ErrorMessage = "Wrong username or password.";
+
+            return View("Login", model);
         }
 
         public async Task<IActionResult> Logout()
