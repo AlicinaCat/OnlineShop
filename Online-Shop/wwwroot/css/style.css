@@ -20,10 +20,10 @@
     color: #ffffff;
 }
 
-    .jumbotron h1 {
-        color: #ffffff;
-        text-align: left;
-    }
+ .jumbotron h1 {
+    color: #ffffff;
+    text-align: left;
+}
 
 .bg-light {
     background-color: #e52020 !important;
@@ -91,4 +91,17 @@ h4 {
 
 a {
     color: green;
+}
+
+footer a {
+    color: white;
+}
+
+footer a:hover, a::after {
+    color: white;
+    text-decoration: none;
+}
+
+footer p {
+    color: white;
 }
